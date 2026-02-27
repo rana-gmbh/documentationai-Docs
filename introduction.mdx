@@ -1,78 +1,103 @@
 ---
-title: Set Up Your Documentation
-description: 'A minimal, editable starting point for your own documentation site.'
+title: Netfluss overview
+description: Monitor real-time upload and download rates from your macOS menu bar with Netfluss, including top apps by bandwidth and simple install options.
 ---
-## Start here (5–10 minutes)
 
-1. Edit this page so it describes your product and audience.
+## App overview
 
-2. Customize your onboarding flow in the [Quickstart](/quickstart) page.
+Netfluss runs in your macOS menu bar and shows real-time upload and download rates across all active network adapters, plus the apps using the most bandwidth.
 
-3. Delete or rewrite any sections and pages you do not plan to use.
+Use it to keep an eye on background data usage, confirm that large downloads or uploads are running, and quickly spot unusual network activity without leaving your desktop.
 
-4. Invite a teammate to review the structure and concepts starting from [Core Concepts](/concepts).
+<Image
+  src="https://raw.githubusercontent.com/rana-gmbh/netfluss/main/screenshot.png"
+  alt="Netfluss screenshot showing live upload and download rates and top apps using bandwidth in the macOS menu bar"
+  width="790"
+  height="1084"
+/>
 
-<Callout kind="alert" collapsed="false">
-  This site ships with placeholder content. Edit the text, links, and examples so they match your product before sharing it with others.
+<Callout kind="info">
+
+Netfluss supports macOS 13 Ventura or later. The app is notarized and signed with a Developer ID, so macOS Gatekeeper recognizes it as trusted software.
+
 </Callout>
 
-## What you get
+## What Netfluss shows
 
-<Columns cols="3">
-  <Card title="Docs structure" href="/quickstart" icon="book-open" horizontal="false">
-    A clear navigation layout with starter pages you can rename or replace.
+Netfluss focuses on low-friction, always-available network visibility in the menu bar:
+
+- **Live upload and download rates** for your active network adapters, updated in real time.
+- **Per-app bandwidth usage**, so you can see which processes consume the most data.
+- **At-a-glance status** without opening Activity Monitor or a full network tool.
+
+You control when to open the detailed view from the menu bar, keeping your desktop uncluttered while still having network insights a click away.
+
+## Getting started
+
+Install Netfluss either by downloading the latest GitHub release or by using the Homebrew cask. Both options install the same signed and notarized app.
+
+<Tabs>
+  <Tab title="GitHub release" icon="download">
+
+  <Steps>
+    <Step title="Download the latest release" icon="download" titleType="p">
+
+      Go to the Netfluss GitHub Releases page and download the latest `Netfluss-<version>.zip` archive.
+
+    </Step>
+
+    <Step title="Unzip and move the app" icon="folder" titleType="p">
+
+      Unzip the downloaded file, then drag `Netfluss.app` into your `/Applications` folder so it is available for all users on your Mac.
+
+    </Step>
+
+    <Step title="Open Netfluss" icon="play-circle" titleType="p">
+
+      Launch `Netfluss.app` from `/Applications`. After it starts, look for the Netfluss icon in your menu bar to confirm it is running.
+
+    </Step>
+  </Steps>
+
+  </Tab>
+
+  <Tab title="Homebrew" icon="terminal">
+
+  <Steps>
+    <Step title="Install via Homebrew cask" icon="terminal" titleType="p">
+
+      Run the following command in Terminal to install Netfluss:
+
+      ```bash
+      brew install --cask rana-gmbh/netfluss/netfluss
+      ```
+
+      Homebrew downloads the latest release and places `Netfluss.app` into your `/Applications` folder.
+
+    </Step>
+
+    <Step title="Start the app" icon="play-circle" titleType="p">
+
+      Open `Netfluss.app` from `/Applications` or search for "Netfluss" with Spotlight. After launch, confirm the Netfluss icon appears in your menu bar and shows live network rates.
+
+    </Step>
+  </Steps>
+
+  </Tab>
+</Tabs>
+
+## Useful links
+
+<Columns cols={3}>
+  <Card title="GitHub repository" href="https://github.com/rana-gmbh/netfluss" icon="github" horizontal="false">
+    Browse the source code, file issues, and contribute to Netfluss on GitHub.
   </Card>
 
-  <Card title="Components" href="#try-a-few-components" icon="layout-grid" horizontal="false" target="_self">
-    Prebuilt blocks like Callouts, Steps, Tabs, and Cards to keep pages clean.
+  <Card title="Latest releases" href="https://github.com/rana-gmbh/netfluss/releases/latest" icon="download" horizontal="false">
+    Download signed release builds directly if you prefer manual updates.
   </Card>
 
-  <Card title="API reference hook" href="/authentication" icon="code" horizontal="false">
-    A placeholder `openapi.yaml` you can swap with your real API spec.
+  <Card title="Changelog" href="/changelog" icon="history" horizontal="false">
+    See detailed release notes and version history for Netfluss.
   </Card>
 </Columns>
-
-## Make your first edit
-
-<Steps>
-  <Step title="Rewrite this page" icon="edit" title-type="p">
-    Update the title, description, and sections in `introduction` so they reflect your product and documentation goals.
-  </Step>
-
-  <Step title="Customize Quickstart" icon="zap" title-type="p">
-    Replace the steps in `quickstart` with your real onboarding flow so new readers know exactly how to get started.
-  </Step>
-
-  <Step title="Remove or repurpose samples" icon="trash" title-type="p">
-    Delete unused sample sections and pages, or rewrite them with your own content to keep navigation focused.
-  </Step>
-</Steps>
-
-## Try a few components
-
-You can browse the component gallery in the [Components](/components) page for ready-to-use examples of Cards, Callouts, Steps, Tabs, and more.
-
-## Continue to the rest of the sample
-
-<Columns cols="2">
-  <Card title="Quickstart" href="/quickstart" icon="zap" horizontal="false">
-    See the minimal setup flow.
-  </Card>
-
-  <Card title="Core Concepts" href="/concepts" icon="layers" horizontal="false">
-    Learn how pages, navigation, and components fit together.
-  </Card>
-
-  <Card title="Components" href="/components" icon="code" horizontal="false">
-    A small gallery of built-in components.
-  </Card>
-
-  <Card title="Authentication" href="/authentication" icon="lock" horizontal="false">
-    Example layout for an auth guide.
-  </Card>
-
-  <Card title="Help Center" href="/help-center" icon="help-circle" horizontal="false">
-    Starter FAQ, guides, and troubleshooting templates.
-  </Card>
-</Columns>
-

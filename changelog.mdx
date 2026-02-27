@@ -1,22 +1,83 @@
 ---
-title: Sample Changelog
-description: Sample release notes you can replace with your real updates.
+title: Changelog
+description: Release notes for Netfluss.
 ---
 
-## Sample updates
+## Netfluss releases
 
-<Callout kind="alert">
-This changelog is example content. Replace every entry with your real releases.
+<Callout kind="info">
+Track Netfluss updates, new features, and bug fixes across all released versions.
 </Callout>
 
-<Update label="2026-01-26" description="Sample Update" tags={["sample"]}>
-## What changed
-- Cleaned up placeholder copy across the starter kit.
-- Added clearer "sample" messaging to avoid confusion.
+<Update label="2026-02-25" description="Netfluss 1.7" tags={["feature", "improvement"]}>
+## What's new
+- Added a launch-at-login toggle so Netfluss starts automatically with macOS when enabled.
+- Made the adapter list in the popover scrollable to handle many network interfaces.
+- Introduced a bandwidth exclude option to ignore selected adapters from total traffic.
+- Updated the app icon for a refreshed appearance in the Dock and menu bar.
+- Bumped version information in the About window and documentation to reflect this release.
 </Update>
 
-<Update label="2025-12-10" description="Sample Update" tags={["sample"]}>
-## What changed
-- Simplified the Quickstart steps.
-- Trimmed Help Center examples.
+<Update label="2026-02-24" description="Netfluss 1.6.1" tags={["bugfix", "stability"]}>
+## What's new
+- Fixed a crash affecting Intel Macs on macOS 13 during startup.
+- Deferred creation of the status bar controller until after `applicationDidFinishLaunching` using an application delegate adaptor.
+- Improved status bar initialization timing to make launch behavior more reliable across hardware and OS versions.
+</Update>
+
+<Update label="2026-02-24" description="Netfluss 1.6" tags={["feature", "improvement"]}>
+## What's new
+- Enabled custom names for network adapters so you can label interfaces in a way that matches your setup.
+- Added drag-to-reorder for adapters, letting you control the order in which they appear in the popover.
+- Introduced a menu bar icon-only mode to show traffic without a text label in the status bar.
+- Included GPL license headers and a license notice to clarify open source licensing.
+- Updated the release workflow to ship a universal binary that supports both Apple Silicon and Intel Macs.
+- Refreshed the README and related documentation to cover new features and packaging changes.
+</Update>
+
+<Update label="2026-02-24" description="Netfluss 1.5" tags={["bugfix", "improvement"]}>
+## What's new
+- Resolved a popover freeze that occurred after closing the About window, restoring normal interaction.
+- Adjusted the About window behavior for more consistent presentation and dismissal.
+- Tuned the update checker to integrate better with the About flow and overall app lifecycle.
+</Update>
+
+<Update label="2026-02-23" description="Netfluss 1.4" tags={["feature", "ui"]}>
+## What's new
+- Added a theme picker with System, Dracula, Nord, and Solarized options to customize the look of Netfluss.
+- Hid upload and download color pickers when using non-system themes to keep settings relevant and clear.
+- Introduced menu bar font size and style controls so you can tune readability and space usage.
+- Updated status item length measurement to run on every update, improving truncation and layout behavior.
+</Update>
+
+<Update label="2026-02-20" description="Netfluss 1.3" tags={["feature", "stability"]}>
+## What's new
+- Added a reconnect button for adapters so you can manually reattach when an interface loses connection.
+- Reworked Top Apps sampling to avoid a pipe buffer deadlock, improving reliability under load.
+- Stabilized the Top Apps layout for more consistent alignment and spacing.
+- Reduced the visible Top Apps limit to focus on the most relevant processes and keep the view compact.
+</Update>
+
+<Update label="2026-02-19" description="Netfluss 1.2" tags={["feature", "ui"]}>
+## What's new
+- Refactored the main interface with a major UI update to make sections clearer and easier to scan.
+- Introduced a total rates header that shows combined upload and download throughput across adapters.
+- Redesigned adapter views as cards with clearer grouping and per-interface details.
+- Added an IP section with copy support, making it faster to share or reuse address information.
+- Improved the Top Apps section with better structure and presentation of per-app traffic.
+- Added color pickers for key metrics to let you align Netfluss with your preferred color scheme.
+</Update>
+
+<Update label="2026-02-07" description="Netfluss 1.1" tags={["feature"]}>
+## What's new
+- Introduced the first version of Top Apps, showing which applications are using the most bandwidth.
+- Based Top Apps on system `nettop` data to surface per-process network usage.
+- Added a preferences toggle so you can enable or disable Top Apps depending on your needs and privacy preferences.
+</Update>
+
+<Update label="2026-02-05" description="Netfluss 1.0" tags={["initial-release"]}>
+## What's new
+- Shipped the initial Netfluss release for monitoring network traffic from the macOS menu bar.
+- Displayed real-time upload and download rates for active network adapters.
+- Provided a popover view with per-adapter details for a quick overview of current network activity.
 </Update>
