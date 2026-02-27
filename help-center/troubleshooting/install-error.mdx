@@ -1,26 +1,210 @@
 ---
-title: Page Missing in Sidebar
-description: Fix a page that does not appear in navigation.
+title: Fix install and runtime issues
+description: Diagnose and fix common Netfluss problems including install errors, missing menu bar icon, empty Top Apps, Wi‑Fi SSID issues, adapter clutter, and stuck popover buttons.
 ---
-## Symptoms
 
-- A new page file exists but does not show up in the sidebar.
+## App will not open or shows a Gatekeeper or damaged app warning
 
-- Clicking a nav item shows a 404.
+Gatekeeper sometimes blocks apps downloaded from the internet, or reports that the app is damaged, even when the download is valid.
 
-## Fix
+<Callout kind="info">
+
+Netfluss is notarized and signed with a Developer ID. Gatekeeper should allow it to run once macOS recognizes it as an installed application.
+
+</Callout>
 
 <Steps>
-  <Step title="Confirm the file name" icon="file-text" title-type="p">
-    Ensure the file exists.
+  <Step title="Move Netfluss to Applications" icon="folder" titleType="p">
+
+    - Drag `Netfluss.app` into your `/Applications` folder if it is not already there.
+    - Launch Netfluss from `/Applications` or Spotlight instead of running it from the Downloads folder.
+
   </Step>
 
-  <Step title="Update navigation" icon="settings" title-type="p">
-    Add or fix the matching `path` in `documentation.json` or from navigation menu.
+  <Step title="Re-download from the official release" icon="download" titleType="p">
+
+    - Delete the existing `Netfluss.app`.
+    - Download the latest zip from the official Netfluss releases page.
+    - Unzip the download and move the new `Netfluss.app` into `/Applications` again.
+
   </Step>
 
-  <Step title="Publish" icon="refresh-cw" title-type="p">
-    Publish so changes take effect.
+  <Step title="Override the first launch warning" icon="shield" titleType="p">
+
+    - Try to open Netfluss. If macOS shows a warning, open **System Settings → Privacy & Security**.
+    - Scroll to the security section and look for a message about Netfluss being blocked.
+    - Click **Allow Anyway**, then launch Netfluss again from `/Applications`.
+
   </Step>
 </Steps>
 
+If Netfluss still does not open after reinstalling and allowing it in Privacy & Security, capture any exact error text and contact support.
+
+---
+
+## Netfluss icon is missing from the menu bar
+
+Netfluss runs as a menu bar app. If you do not see the icon, either the app is not running or macOS is hiding the icon.
+
+<Steps>
+  <Step title="Confirm Netfluss is running" icon="terminal" titleType="p">
+
+    - Open **Activity Monitor** and search for `Netfluss`.
+    - If you do not see it, open `/Applications/Netfluss.app` again.
+
+  </Step>
+
+  <Step title="Reveal hidden menu bar icons" icon="monitor" titleType="p">
+
+    - On macOS, some menu bar icons hide behind a chevron or section on the right.
+    - Click any chevron or overflow indicator in the menu bar and look for the Netfluss icon.
+    - Drag the icon out to pin it, if macOS allows reordering.
+
+  </Step>
+
+  <Step title="Quit and relaunch Netfluss" icon="refresh-cw" titleType="p">
+
+    - If you see Netfluss in Activity Monitor but not in the menu bar, quit the process from Activity Monitor.
+    - Relaunch `/Applications/Netfluss.app` and watch for the icon to appear in the menu bar.
+
+  </Step>
+</Steps>
+
+If the icon still does not appear, try restarting macOS and launching Netfluss again after the restart.
+
+---
+
+## Top Apps shows no data
+
+Top Apps reads per-connection byte counts from the system using `netstat -n -b -v` and only shows processes with active TCP or UDP connections. If no app currently has an active connection, the list remains empty.
+
+<Callout kind="info">
+
+Users have reported seeing an empty Top Apps view even though the feature is enabled. In these cases, the issue was that no app had active network traffic at that moment, not a missing permission.
+
+</Callout>
+
+<Steps>
+  <Step title="Generate active network traffic" icon="zap" titleType="p">
+
+    - Open a browser and load a few websites, start a video stream, or download a file.
+    - Keep the traffic running while you view the Netfluss popover.
+
+  </Step>
+
+  <Step title="Confirm Top Apps is enabled" icon="settings" titleType="p">
+
+    - Open the Netfluss popover and go to its preferences or settings.
+    - Ensure the Top Apps feature is turned on.
+
+  </Step>
+
+  <Step title="Reopen the Netfluss popover" icon="play-circle" titleType="p">
+
+    - Close the popover if it is open, then click the Netfluss menu bar icon again.
+    - Check whether apps with active TCP or UDP connections now appear in the Top Apps list.
+
+  </Step>
+</Steps>
+
+If Top Apps stays empty even while streaming or downloading data, note your macOS version and share details via the GitHub issue tracker, referencing the existing discussion in issue 7.
+
+---
+
+## Wi‑Fi SSID or band is missing
+
+Wi‑Fi SSID and band information come from CoreWLAN, which on macOS can require Location Services access to expose SSID details.
+
+<Callout kind="alert">
+
+If you deny Location Services access when macOS first prompts for it, Netfluss cannot show SSID or band details until you re-enable access in System Settings.
+
+</Callout>
+
+<Steps>
+  <Step title="Look for the Location Services prompt" icon="info" titleType="p">
+
+    - The first time Netfluss tries to read Wi‑Fi SSID details, macOS may show a Location Services dialog.
+    - When prompted, grant access so Netfluss can display SSID and band information.
+
+  </Step>
+
+  <Step title="Re-enable access in System Settings" icon="settings" titleType="p">
+
+    - Open **System Settings → Privacy & Security → Location Services**.
+    - Find Netfluss in the app list and enable Location Services for it.
+    - Restart Netfluss and check the Wi‑Fi SSID and band fields again.
+
+  </Step>
+</Steps>
+
+If the SSID or band are still blank after granting Location Services access, verify that your Mac is connected to Wi‑Fi and not using Ethernet only.
+
+---
+
+## Too many adapters and scrolling behavior
+
+VPN clients and other tools often create many virtual network adapters. Netfluss lets you rename, reorder, and hide adapters, and caps the visible list so the popover remains usable.
+
+<Callout kind="info">
+
+From version 1.7, the adapter list in the popover scrolls when more than six interfaces are active. The list shows up to six adapter cards at once, and you can scroll to see the rest. IP addresses and Top Apps stay visible below the list.
+
+</Callout>
+
+<Steps>
+  <Step title="Rename and reorder important adapters" icon="edit" titleType="p">
+
+    - Use Netfluss preferences to rename adapters that matter to you and move them near the top of the list.
+    - Keep in mind that some VPN tools create new interfaces each time they connect, so names might not stay attached to the same underlying device, as reported in issue 6.
+
+  </Step>
+
+  <Step title="Hide inactive or other adapters" icon="minus" titleType="p">
+
+    - In preferences, enable options to hide inactive adapters.
+    - Use any available setting to hide other or virtual adapters that you do not need to see.
+
+  </Step>
+
+  <Step title="Scroll through the adapter list" icon="arrow-right" titleType="p">
+
+    - When more than six interfaces are active, move your mouse over the adapter section in the popover.
+    - Scroll to view additional adapters while keeping IP addresses and Top Apps visible.
+
+  </Step>
+</Steps>
+
+If adapter clutter remains a problem with heavy VPN usage, consider limiting which VPN tools run at the same time so they create fewer simultaneous virtual interfaces.
+
+---
+
+## Popover buttons are unresponsive after using About or Preferences
+
+Older versions of Netfluss had a bug where, after opening and closing the About window, footer buttons in the popover could stop responding.
+
+<Callout kind="alert">
+
+This bug was fixed in version 1.5 by changing window activation behavior. If you see unresponsive buttons, you are likely on an older build and should update.
+
+</Callout>
+
+<Steps>
+  <Step title="Update Netfluss to the latest version" icon="download" titleType="p">
+
+    - Quit Netfluss if it is running.
+    - Download the most recent release zip from the official Netfluss releases page.
+    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
+
+  </Step>
+
+  <Step title="Test the popover after updating" icon="check-circle" titleType="p">
+
+    - Click the Netfluss menu bar icon to open the popover.
+    - Open the About or Preferences window, close it, and then try the footer buttons again.
+    - Confirm that the buttons respond as expected.
+
+  </Step>
+</Steps>
+
+If the popover still ignores clicks after updating, restart macOS and test again. If the issue persists, include your Netfluss version and macOS version when you contact support.

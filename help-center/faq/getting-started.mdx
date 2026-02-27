@@ -1,20 +1,150 @@
 ---
-title: Where does this documentation come from?
-description: Clarify that this site is a sample starter kit.
+title: Netfluss FAQ
+description: Answers to common Netfluss questions about features, macOS support, install methods, permissions, privacy, and troubleshooting.
 ---
-## Short answer
 
-This is sample content bundled with the starter kit. It is not your product documentation yet.
+## Frequently asked questions
 
-## What to do next
+<ExpandableGroup>
 
-- Replace each page with your real information.
+<Expandable title="What is Netfluss and what does it show?">
 
-- Update navigation labels from dashboard editor or from `documentation.json`.
+Netfluss is a minimal macOS menu bar app that shows real-time upload and download rates across all active network adapters on your Mac.
 
-- Remove sections you do not plan to maintain.
+When you click the menu bar item, Netfluss also shows:
 
-<Callout kind="info" collapsed="false">
-  If you are unsure where a page comes from, look for its `.mdx` file in this repo and edit it directly.
+- Current bandwidth per adapter (Wi‑Fi, Ethernet, VPN, and other virtual interfaces)
+- Important IP addresses, including local/router and external IPs
+- Options to quickly reconnect network adapters when needed
+
+</Expandable>
+
+<Expandable title="Is Netfluss free and open source? What license does it use?">
+
+Netfluss is free to use and open source. The entire app is written in Swift and published on GitHub.
+
+The project is licensed under an open-source license, which you can review directly in the `LICENSE` file in the Netfluss GitHub repository.
+
+</Expandable>
+
+<Expandable title="Which macOS versions does Netfluss support?">
+
+Netfluss requires macOS 13 Ventura or later. Earlier macOS versions are not supported.
+
+<Callout kind="info">
+
+If Netfluss does not launch or refuses to install on an older system, check your macOS version in `` → `About This Mac` and upgrade to macOS 13 or newer.
+
 </Callout>
 
+</Expandable>
+
+<Expandable title="How do I install Netfluss (Homebrew vs manual)?">
+
+Install Netfluss in either of these ways:
+
+**Homebrew (recommended if you already use Homebrew):**
+
+```bash
+brew install --cask rana-gmbh/netfluss/netfluss
+```
+
+**Manual install:**
+
+1. Download the latest Netfluss `.zip` from the releases section of the GitHub repository.
+2. Unzip the archive.
+3. Move `Netfluss.app` into your `/Applications` folder.
+4. Launch Netfluss from Applications or Spotlight.
+
+After installation, you should see the Netfluss icon appear in your menu bar. Click it to open the detailed view.
+
+</Expandable>
+
+<Expandable title="Why does macOS ask for Location Services permission?">
+
+Netfluss uses the macOS CoreWLAN framework to show your Wi‑Fi SSID (network name) and band. On macOS, exposing SSID details through CoreWLAN is tied to Location Services.
+
+When Netfluss first tries to access Wi‑Fi SSID and band information, macOS may ask you to grant Location Services permission. If you deny this, Netfluss continues to work, but SSID-related details may be missing.
+
+<Callout kind="info">
+
+Netfluss does not track or send your physical location. The Location Services prompt comes from macOS because SSID access is classified as location-related data.
+
+</Callout>
+
+</Expandable>
+
+<Expandable title="Where do the IP addresses come from?">
+
+Netfluss shows both internal and external IP information:
+
+- **Local/router IPs** come from your active network adapters on macOS.
+- **External IP** is fetched from the public service `api.ipify.org` and cached for 60 seconds.
+
+This caching avoids unnecessary network requests while keeping your external IP reasonably up to date.
+
+</Expandable>
+
+<Expandable title="Why is Top Apps empty or not updating?">
+
+The Top Apps view reads per‑connection byte counts from the `netstat -n -b -v` command and matches them to processes using `proc_pidpath`. Only processes with active TCP or UDP connections appear in the list.
+
+Top Apps may appear empty or static when:
+
+- Your Mac has no active network traffic from user apps
+- Only background system processes are talking to the network
+- The active traffic is very low or very short‑lived
+
+To check whether it works, start a clearly network-heavy task, such as:
+
+- Streaming a video in your browser
+- Downloading a large file
+
+Then reopen or refresh the Top Apps view. If you still never see any entries even during obvious traffic, open an issue on GitHub with details about your macOS version and screenshots.
+
+</Expandable>
+
+<Expandable title="Why do I see many adapters (VPN or virtual interfaces)?">
+
+Netfluss shows all active network adapters, including:
+
+- Physical adapters (Wi‑Fi, Ethernet)
+- VPN interfaces
+- Virtual adapters created by security tools or virtualization software
+
+Some VPN or networking tools create new virtual adapters frequently. In those cases, renaming a specific adapter may not persist because the tool replaces the interface with a new one.
+
+Use the Netfluss preferences to:
+
+- Hide inactive adapters
+- Hide certain categories of adapters (such as VPN or virtual interfaces)
+- Control per‑adapter visibility and how they contribute to totals
+
+If you still see too many adapters, review your VPN or virtualization setup to reduce the number of virtual interfaces that macOS exposes.
+
+</Expandable>
+
+<Expandable title="Is the app notarized and signed?">
+
+Yes. Netfluss is notarized by Apple and signed with a Developer ID certificate.
+
+This means Gatekeeper recognizes the app as coming from an identified developer, and you can run it on macOS without bypassing security checks.
+
+</Expandable>
+
+<Expandable title="Where can I report bugs or request features?">
+
+Report bugs, ask questions, or request features in the Netfluss GitHub repository by opening a new issue.
+
+When you create an issue, include:
+
+- Your macOS version
+- The Netfluss version
+- A clear description of the problem or request
+- Screenshots or screen recordings, if relevant
+
+Providing detailed information helps the maintainer reproduce and fix issues faster.
+
+</Expandable>
+
+</ExpandableGroup>
