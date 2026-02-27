@@ -1,58 +1,153 @@
 ---
 title: Quickstart
-description: Minimal steps to customize this sample starter kit.
+description: Install Netfluss on macOS, read real-time network rates from the menu bar, and customize adapters, appearance, units, and behavior.
 ---
-## Overview
 
-<Callout kind="alert" collapsed="false">
-  This site ships with placeholder content. Use this quickstart to replace it with your real product docs.
+## Get Netfluss running
+
+Monitor upload and download rates from your macOS 13+ menu bar in a few minutes.
+
+<Callout kind="info">
+
+Netfluss supports macOS 13 or later. For the best experience, drag Netfluss.app to `/Applications` and keep it running in the background.
+
 </Callout>
 
-## 1. Update a page
+### Install Netfluss
+
+Use either Homebrew or a manual download.
+
+<Tabs>
+
+<Tab title="Homebrew" icon="terminal">
+
+Run this command in Terminal:
+
+```bash
+brew install --cask rana-gmbh/netfluss/netfluss
+```
+
+After installation, launch Netfluss from Spotlight or the Applications folder.
+
+</Tab>
+
+<Tab title="Manual download" icon="download">
+
+<ul>
+  <li>Download the latest release from <a href="https://github.com/rana-gmbh/netfluss/releases/latest">GitHub Releases</a>.</li>
+  <li>Unzip the archive and drag <code>Netfluss.app</code> to <code>/Applications</code>.</li>
+  <li>Open Netfluss from the Applications folder or via Spotlight.</li>
+</ul>
+
+</Tab>
+
+</Tabs>
+
+## First launch and basics
 
 <Steps>
-  <Step title="Edit introduction" icon="edit" title-type="p">
-    Replace the sample introduction with a concise overview of your product and the key actions you want new users to take first.
+
+  <Step title="Launch and find the menu bar item" icon="play-circle" title-type="p">
+
+  - Open Netfluss; a new icon with `↑` and `↓` rates appears in the menu bar.
+  - Confirm the numbers change when you browse the web or download a file.
+
   </Step>
 
-  <Step title="Preview your change" icon="monitor" title-type="p">
-    Use your dashboard board editor to confirm the updated introduction looks and reads as expected.
+  <Step title="Open the popover" icon="monitor" title-type="p">
+
+  - Click the Netfluss menu bar item to open the popover.
+  - Check the **total upload/download header** and the list of **network adapters** (Wi‑Fi, Ethernet, VPN, etc.).
+
   </Step>
+
+  <Step title="Use adapter cards and reconnect" icon="settings" title-type="p">
+
+  - Read per-adapter `↑` and `↓` rates directly on each card.
+  - If an adapter shows as disconnected, use its **Reconnect** button when available.
+
+  </Step>
+
 </Steps>
 
-## 2. Add a new page
+## See Top Apps and IP addresses
 
 <Steps>
-  <Step title="Add a page" icon="file-text" title-type="p">
-    Create a new `page` by clicking on the + button from the left navigation bar of dashboard. If you are using git, create the .mdx file and add to navigation bar using documentation.json
+
+  <Step title="Enable Top Apps" icon="bar-chart" title-type="p">
+
+  - Open Netfluss preferences from the popover (gear icon or Preferences menu).
+  - Enable **Top Apps** to show the top 5 processes by current traffic in the popover.
+
   </Step>
+
+  <Step title="Copy IP addresses" icon="copy" title-type="p">
+
+  - In the popover, find the **IP addresses** section (internal, router, external).
+  - Click any IP to copy it to the clipboard for quick sharing or troubleshooting.
+
+  </Step>
+
 </Steps>
 
-## Example onboarding flow (replace with yours)
+## Customize adapters and appearance
 
-1. Sign up for an account and verify your email.
+<Steps>
 
-2. Create your first workspace, project, or environment.
+  <Step title="Hide, rename, and reorder adapters" icon="edit" title-type="p">
 
-3. Add one integration or data source to connect your existing tools.
+  - In preferences, choose which adapters to show, including VPN or virtual adapters.
+  - Hide adapters you do not care about, rename them (for example, `Office Wi‑Fi`), and drag to reorder.
+  - Optionally limit the **total header** to only count visible adapters.
 
-4. Complete a guided action (for example, run your first job or publish your first resource).
+  </Step>
 
-5. Invite a teammate and assign a basic role or permission.
+  <Step title="Adjust appearance and units" icon="monitor" title-type="p">
 
-## 3. Connect API Reference (optional)
+  - Switch between themes such as System, Dracula, Nord, and Solarized.
+  - Choose the menu bar style: show live rates or an icon-only mode.
+  - Set font size and font design (monospaced, system, or rounded) for the menu bar text.
+  - Toggle units between **bits/s** and **bytes/s** based on your preference.
 
-If you have an API, replace `openapi.yaml` with your real OpenAPI file. If you do not need an API reference, remove that tab either from dashboard or  `documentation.json`.
+  </Step>
+
+  <Step title="Tune refresh and startup behavior" icon="zap" title-type="p">
+
+  - Set the **refresh interval** to control how often Netfluss updates rates.
+  - Enable **Launch at login** so Netfluss starts automatically with macOS.
+  - Verify that the menu bar item appears after your next login.
+
+  </Step>
+
+</Steps>
+
+## Check for updates
+
+<Steps>
+
+  <Step title="Use the About window" icon="info" title-type="p">
+
+  - Open the Netfluss **About** window from the app menu.
+  - Click **Check for updates** to jump to the latest GitHub release and install a newer version if available.
+
+  </Step>
+
+</Steps>
 
 ## Next steps
 
-<Columns cols="2">
-  <Card title="Core Concepts" href="/concepts" icon="layers" horizontal="false">
-    Keep the mental model simple and easy to scan.
+<Columns cols={2}>
+
+  <Card title="Explore preferences" href="/concepts" icon="settings" horizontal="false">
+
+    Learn how each Netfluss option affects what you see in the menu bar and popover.
+
   </Card>
 
-  <Card title="Authentication" href="/authentication" icon="lock" horizontal="false">
-    Add your real auth flows and security notes.
+  <Card title="Troubleshooting install issues" href="/help-center/troubleshooting/install-error" icon="alert-triangle" horizontal="false">
+
+    Fix common problems if Netfluss does not appear in the menu bar or fails to start.
+
   </Card>
+
 </Columns>
-
