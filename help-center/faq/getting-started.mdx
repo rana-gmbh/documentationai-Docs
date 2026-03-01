@@ -85,6 +85,14 @@ This caching avoids unnecessary network requests while keeping your external IP 
 
 </Expandable>
 
+<Expandable title="What is Connection Flow View and how do I use it?">
+
+Connection Flow View shows a visual path from your Mac to your router and out to the internet, including a VPN tunnel if one is active. You can optionally show IP addresses at each hop and see a country flag for VPN exit nodes.
+
+Enable or disable Connection Flow View and its IP display options in Netfluss Preferences. Use it when you want a quick, visual check of how your traffic is routed, including whether a VPN is active and where it exits.
+
+</Expandable>
+
 <Expandable title="Why is Top Apps empty or not updating?">
 
 The Top Apps view reads per‑connection byte counts from the `netstat -n -b -v` command and matches them to processes using `proc_pidpath`. Only processes with active TCP or UDP connections appear in the list.
@@ -107,6 +115,14 @@ Then reopen or refresh the Top Apps view. If you still never see any entries eve
 If you run macOS 15 and Top Apps stays empty, update to Netfluss 1.7.1 or later. Earlier Netfluss versions on macOS 15 include a bug that can prevent Top Apps from showing or updating.
 
 </Callout>
+
+</Expandable>
+
+<Expandable title="What are adapter and Top Apps grace periods?">
+
+Grace periods keep adapters and apps visible for a short time after they go idle, so lists do not flicker when traffic briefly stops. You can set Adapter Grace Period and Top Apps Grace Period to 3, 5, or 10 seconds in Netfluss Preferences.
+
+Longer grace periods keep adapter cards and the Top Apps list more stable, while shorter grace periods make them react faster to changes. Adjust these values based on whether you prefer stability or immediacy in the UI.
 
 </Expandable>
 
