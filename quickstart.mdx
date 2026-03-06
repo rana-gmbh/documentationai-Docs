@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-description: Install Netfluss on macOS, read real-time network rates from the menu bar, and customize adapters, appearance, units, and behavior.
+description: Install Netfluss on macOS, read real-time network rates from the menu bar, and customize adapters, appearance, units, DNS presets, and app visibility.
 ---
 
 ## Get Netfluss running
@@ -59,6 +59,7 @@ After installation, launch Netfluss from Spotlight or the Applications folder.
   - Click the Netfluss menu bar item to open the popover.
   - Check the **total upload/download header** and the list of **network adapters** (Wi‑Fi, Ethernet, VPN, etc.).
   - On the Wi‑Fi adapter card, click the **info** button to open the Wi‑Fi detail popover with channel, signal quality, and copyable network identifiers.
+  - In the popover, find the **DNS Switcher** section when available.
 
   </Step>
 
@@ -66,6 +67,28 @@ After installation, launch Netfluss from Spotlight or the Applications folder.
 
   - Read per-adapter `↑` and `↓` rates directly on each card.
   - If an adapter shows as disconnected, use its **Reconnect** button when available.
+
+  </Step>
+
+</Steps>
+
+## Switch DNS providers
+
+<Steps>
+
+  <Step title="Choose a DNS preset from the popover" icon="code" title-type="p">
+
+  - In the popover, use **DNS Switcher** to switch between built‑in presets such as Cloudflare, Google, Quad9, and OpenDNS.
+  - Add and select custom presets if you use your own DNS servers.
+  - Confirm macOS prompts for your admin password when you apply a different DNS preset.
+
+  </Step>
+
+  <Step title="Manage presets in preferences" icon="settings" title-type="p">
+
+  - Open Netfluss preferences from the popover (gear icon or Preferences menu).
+  - In the DNS section, toggle individual presets on or off to control which ones appear in the popover.
+  - Drag presets to reorder them so your most-used options appear at the top of the DNS Switcher list.
 
   </Step>
 
@@ -79,6 +102,14 @@ After installation, launch Netfluss from Spotlight or the Applications folder.
 
   - Open Netfluss preferences from the popover (gear icon or Preferences menu).
   - Enable **Top Apps** to show the top 5 processes by current traffic in the popover.
+
+  </Step>
+
+  <Step title="Hide noisy apps from Top Apps" icon="minus" title-type="p">
+
+  - In preferences, open the **Top Apps** section and go to **Apps to Hide**.
+  - Review the list of processes that used bandwidth in the last 60 seconds.
+  - Click an app in this list to hide it from the Top Apps view when it is generating background traffic.
 
   </Step>
 
@@ -110,12 +141,13 @@ After installation, launch Netfluss from Spotlight or the Applications folder.
 
   </Step>
 
-  <Step title="Adjust appearance and units" icon="monitor" title-type="p">
+  <Step title="Adjust appearance, units, and external IP" icon="monitor" title-type="p">
 
   - Switch between themes such as System, Dracula, Nord, and Solarized.
   - Choose the menu bar style: show live rates or an icon-only mode.
   - Set font size and font design (monospaced, system, or rounded) for the menu bar text.
   - Toggle units between **bits/s** and **bytes/s** based on your preference.
+  - In **Preferences → Appearance → External IP**, choose whether to display your external IPv4 or IPv6 address.
 
   </Step>
 

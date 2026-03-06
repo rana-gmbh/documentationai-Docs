@@ -9,6 +9,22 @@ description: Release notes for Netfluss.
 Track Netfluss updates, new features, and bug fixes across all released versions.
 </Callout>
 
+<Update label="2026-03-06" description="Netfluss 1.9.1" tags={["bugfix", "improvement"]}>
+## What's new
+- Ensured the External IP shows IPv4 by default so dual-stack connections no longer default to IPv6 in the menu bar.
+- Reduced external API calls for country code lookup by performing lookups only while the Connection Flow View is active.
+- Added an IPv4/IPv6 preference for External IP under Preferences → Appearance → External IP so you control which address family Netfluss displays.
+</Update>
+
+<Update label="2026-03-06" description="Netfluss 1.9" tags={["feature", "improvement", "bugfix"]}>
+## What's new
+- Added a DNS Switcher so you switch DNS providers directly from the popover, with built-in presets for Cloudflare, Google, Quad9, and OpenDNS, plus support for custom presets.
+- Made DNS changes a one-click action from the menu bar, prompting for your admin password when required, while keeping your chosen presets manageable from Preferences where you toggle them on or off and drag to reorder.
+- Introduced App Filtering for Top Apps via Preferences → Top Apps → "Apps to Hide", listing all processes that used bandwidth in the last 60 seconds so you can hide noisy background items from the Top Apps view.
+- Improved menu bar stability by using a fixed-width container so the status item no longer shifts as values change and the popover stays anchored in place.
+- Fixed External IP display reliability by switching the lookup to ipwho.is with an api.ipify.org fallback so the external address appears consistently.
+</Update>
+
 <Update label="2026-03-01" description="Netfluss 1.8" tags={["feature", "ui", "improvement"]}>
 ## What's new
 - Added a Connection Flow View with an optional IP display that shows the path from your Mac through the router and any active VPN tunnel to the internet, including a country flag for VPN exit nodes. Switch between classic list and flow view in Preferences.

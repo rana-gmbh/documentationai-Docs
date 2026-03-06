@@ -1,6 +1,6 @@
 ---
 title: Netfluss overview
-description: Monitor real-time upload and download rates from your macOS menu bar with Netfluss, including top apps by bandwidth and simple install options.
+description: Monitor real-time upload and download rates from your macOS menu bar with Netfluss, including top apps by bandwidth and DNS, IP, and external connection details.
 ---
 
 ## App overview
@@ -31,6 +31,11 @@ Netfluss focuses on low-friction, always-available network visibility in the men
 - **Connection Flow View**, showing the path from your Mac through the router and any active VPN tunnel to the internet, with an optional IP display and VPN exit country flag.
 - **Wi‑Fi detail popover**, with Wi‑Fi standard, security, channel and width, signal and noise values, and quick ESSID/BSSID copy plus transmit rate.
 - **Grace periods for adapters and Top Apps**, so brief changes do not cause card flicker and the top-apps list stays stable while you watch it.
+- **DNS Switcher in the popover**, with one-click switching between Cloudflare, Google, Quad9, OpenDNS, and your own custom DNS presets (prompts for your admin password and lets you toggle and reorder presets in Preferences).
+- **Top Apps app filtering**, so you can hide noisy background processes from the Top Apps list via Preferences → Top Apps → "Apps to Hide", based on processes that used bandwidth in the last 60 seconds.
+- **Stable menu bar layout**, using a fixed-width speed display so other menu bar icons do not jump when rates change units.
+- **Reliable External IP display**, backed by ipwho.is with api.ipify.org as a fallback to keep your external address and country flag accurate.
+- **IPv4/IPv6 preference for External IP**, letting you choose whether Netfluss shows your external IPv4 or IPv6 address in Preferences → Appearance → External IP.
 - **At-a-glance status** without opening Activity Monitor or a full network tool.
 
 You control when to open the detailed view from the menu bar, keeping your desktop uncluttered while still having network insights a click away.
@@ -93,14 +98,20 @@ Install Netfluss either by downloading the latest GitHub release or by using the
 
 <Columns cols={3}>
   <Card title="GitHub repository" href="https://github.com/rana-gmbh/netfluss" icon="github" horizontal="false">
+
     Browse the source code, file issues, and contribute to Netfluss on GitHub.
+
   </Card>
 
   <Card title="Latest releases" href="https://github.com/rana-gmbh/netfluss/releases/latest" icon="download" horizontal="false">
+
     Download signed release builds directly if you prefer manual updates.
+
   </Card>
 
   <Card title="Changelog" href="/changelog" icon="history" horizontal="false">
+
     See detailed release notes and version history for Netfluss.
+
   </Card>
 </Columns>
