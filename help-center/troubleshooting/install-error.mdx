@@ -1,6 +1,6 @@
 ---
 title: Fix install and runtime issues
-description: Diagnose and fix common Netfluss problems including install errors, missing menu bar icon, empty Top Apps, Wi‑Fi SSID issues, adapter clutter, and stuck popover buttons.
+description: Diagnose and fix common Netfluss problems including install errors, jumping menu bar layouts, external IP issues, cluttered Top Apps, adapter behavior, and stuck popover buttons.
 ---
 
 ## App will not open or shows a Gatekeeper or damaged app warning
@@ -74,6 +74,25 @@ If the icon still does not appear, try restarting macOS and launching Netfluss a
 
 ---
 
+## Menu bar or popover jumps when speeds change
+
+A layout bug in older Netfluss versions can cause the menu bar label or popover to shift left and right as the numbers change width, for example when speeds move from `999 KB/s` to `1.2 MB/s`.
+
+<Steps>
+  <Step title="Update to Netfluss 1.9 or later" icon="download" titleType="p">
+
+    - Quit Netfluss if it is running.
+    - Download Netfluss 1.9 or later from the official releases page.
+    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Watch the menu bar while speeds change to confirm that the icons and popover now stay in a fixed position.
+
+  </Step>
+</Steps>
+
+Version 1.9 uses a fixed-width container for the menu bar display so other icons no longer jump when values change.
+
+---
+
 ## Top Apps shows no data
 
 Top Apps reads per-connection byte counts from the system using `netstat -n -b -v` and only shows processes with active TCP or UDP connections. If no app currently has an active connection, the list remains empty.
@@ -117,6 +136,25 @@ If Top Apps stays empty even while streaming or downloading data, note your macO
 
 ---
 
+## Top Apps is cluttered with background processes
+
+Background services such as `mDNSResponder` or other system daemons can appear in Top Apps when they use bandwidth, which can push your actual apps off the list.
+
+<Steps>
+  <Step title="Hide noisy background apps from Top Apps" icon="minus" titleType="p">
+
+    - Open the Netfluss popover and go to **Preferences → Top Apps**.
+    - In **Apps to Hide**, find and select the background processes you do not want to see.
+    - Remember that this list shows processes that used bandwidth in the last 60 seconds, so recently active apps appear here.
+    - Return to the popover and confirm that the hidden apps no longer take up slots in the Top Apps list, leaving more room for the apps you care about.
+
+  </Step>
+</Steps>
+
+Hiding background apps does not affect their network activity; it only cleans up the Top Apps view.
+
+---
+
 ## Wi‑Fi SSID or band is missing
 
 Wi‑Fi SSID and band information come from CoreWLAN, which on macOS can require Location Services access to expose SSID details.
@@ -145,6 +183,34 @@ If you deny Location Services access when macOS first prompts for it, Netfluss c
 </Steps>
 
 If the SSID or band are still blank after granting Location Services access, verify that your Mac is connected to Wi‑Fi and not using Ethernet only.
+
+---
+
+## External IP is missing or shows the wrong IP version
+
+External IP issues usually fall into two categories: the IP address is blank, or the address shows IPv6 when you want to see IPv4 instead.
+
+<Steps>
+  <Step title="Update to Netfluss 1.9 or later for reliable External IP" icon="download" titleType="p">
+
+    - Quit Netfluss if it is running.
+    - Download Netfluss 1.9 or later from the official releases page.
+    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Check the External IP section in the popover to confirm that an address now appears consistently. Netfluss 1.9 uses ipwho.is with an api.ipify.org fallback for improved reliability.
+
+  </Step>
+
+  <Step title="Choose IPv4 or IPv6 in Appearance preferences" icon="settings" titleType="p">
+
+    - Open the Netfluss popover and go to **Preferences → Appearance**.
+    - Find the **External IP** setting and choose whether to display your external IPv4 or IPv6 address.
+    - On dual-stack networks, Netfluss 1.9.1 and later default to IPv4, but you can switch to IPv6 if you prefer.
+    - Return to the popover and verify that the External IP now shows the IP version you selected.
+
+  </Step>
+</Steps>
+
+If the External IP field is still blank after updating and checking preferences, test your internet connection in a browser and try again later in case the lookup services are temporarily unavailable.
 
 ---
 

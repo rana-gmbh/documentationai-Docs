@@ -79,9 +79,9 @@ Netfluss does not track or send your physical location. The Location Services pr
 Netfluss shows both internal and external IP information:
 
 - **Local/router IPs** come from your active network adapters on macOS.
-- **External IP** is fetched from the public service `api.ipify.org` and cached for 60 seconds.
+- **External IP** is looked up using `ipwho.is`, with `api.ipify.org` as a fallback service.
 
-This caching avoids unnecessary network requests while keeping your external IP reasonably up to date.
+Netfluss caches the external IP briefly to avoid unnecessary requests while keeping the value reasonably up to date. In Preferences → Appearance → External IP, you can choose whether Netfluss displays your external IPv4 or IPv6 address.
 
 </Expandable>
 
@@ -118,6 +118,16 @@ If you run macOS 15 and Top Apps stays empty, update to Netfluss 1.7.1 or later.
 
 </Expandable>
 
+<Expandable title="How do I hide or whitelist apps in Top Apps?">
+
+Use app filtering in Top Apps to hide noisy background processes and focus on the traffic you care about.
+
+Go to Preferences → Top Apps → `Apps to Hide`. Netfluss builds this list from processes that used bandwidth in the last 60 seconds, so you normally see it populate after some recent network activity.
+
+Add an app to `Apps to Hide` to remove it from the Top Apps view and free up space for other entries. Hidden apps no longer occupy one of the limited Top Apps slots, which makes it easier to monitor the tools and sites you actually want to track.
+
+</Expandable>
+
 <Expandable title="What are adapter and Top Apps grace periods?">
 
 Grace periods keep adapters and apps visible for a short time after they go idle, so lists do not flicker when traffic briefly stops. You can set Adapter Grace Period and Top Apps Grace Period to 3, 5, or 10 seconds in Netfluss Preferences.
@@ -143,6 +153,24 @@ Use the Netfluss preferences to:
 - Control per‑adapter visibility and how they contribute to totals
 
 If you still see too many adapters, review your VPN or virtualization setup to reduce the number of virtual interfaces that macOS exposes.
+
+</Expandable>
+
+<Expandable title="What is the DNS Switcher and where do I find it?">
+
+DNS Switcher lets you change your active DNS provider directly from the Netfluss popover, without digging into macOS network settings.
+
+Open the Netfluss popover and look for the DNS section to switch between built-in presets for Cloudflare, Google, Quad9, and OpenDNS. You can also define custom DNS presets in Preferences and choose which ones appear.
+
+Switching DNS usually requires administrator rights, so macOS may prompt you for your admin password when you apply a new preset. In Preferences, you can enable or disable individual presets and reorder them to match how you prefer to switch DNS providers.
+
+</Expandable>
+
+<Expandable title="Why did the menu bar text used to jump or shift?">
+
+Earlier Netfluss versions could cause the menu bar layout to shift when the displayed speed changed width, for example from `999 KB/s` to `1.2 MB/s`. As the label grew or shrank, surrounding menu bar icons moved slightly.
+
+Netfluss 1.9 adds a fixed-width container for the menu bar display so the space is reserved in advance and the icons stay stable. If you still notice jumping or shifting, update to Netfluss 1.9 or later.
 
 </Expandable>
 
