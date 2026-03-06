@@ -162,7 +162,9 @@ DNS Switcher lets you change your active DNS provider directly from the Netfluss
 
 Open the Netfluss popover and look for the DNS section to switch between built-in presets for Cloudflare, Google, Quad9, and OpenDNS. You can also define custom DNS presets in Preferences and choose which ones appear.
 
-Switching DNS usually requires administrator rights, so macOS may prompt you for your admin password when you apply a new preset. In Preferences, you can enable or disable individual presets and reorder them to match how you prefer to switch DNS providers.
+When you apply a new DNS preset, Netfluss uses Touch ID authentication for the change when Touch ID is available, instead of showing an admin password dialog. If your Mac does not support Touch ID or it is unavailable, macOS falls back to the standard admin password prompt.
+
+In Preferences → DNS Switcher, you can control how DNS authentication behaves and which presets are enabled and shown, as well as reorder them to match how you prefer to switch DNS providers.
 
 </Expandable>
 

@@ -74,6 +74,39 @@ If the icon still does not appear, try restarting macOS and launching Netfluss a
 
 ---
 
+## Preferences window is too large or does not seem resizable
+
+On smaller screens, the Netfluss preferences window can feel too tall to reach the lowest checkboxes or controls.
+
+<Callout kind="info">
+
+From version 1.9.2, the preferences window is resizable on smaller screens. You can drag the edges to shrink the window height and reveal controls that were previously off-screen.
+
+</Callout>
+
+<Steps>
+  <Step title="Update to Netfluss 1.9.2 or later" icon="download" titleType="p">
+
+    - Quit Netfluss if it is running.
+    - Download Netfluss 1.9.2 or a later version from the official releases page.
+    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Open **Preferences** from the Netfluss popover or menu.
+
+  </Step>
+
+  <Step title="Resize the preferences window" icon="monitor" titleType="p">
+
+    - Move your pointer to any edge or corner of the preferences window.
+    - Even if macOS does not show a resize cursor because of a macOS and SwiftUI limitation, click and drag the window edge.
+    - Drag the bottom edge upward until all checkboxes and controls fit on your screen.
+
+  </Step>
+</Steps>
+
+If the window still does not resize after updating to 1.9.2 or later, confirm you are running the updated app from `/Applications` and not an older copy from another folder.
+
+---
+
 ## Menu bar or popover jumps when speeds change
 
 A layout bug in older Netfluss versions can cause the menu bar label or popover to shift left and right as the numbers change width, for example when speeds move from `999 KB/s` to `1.2 MB/s`.

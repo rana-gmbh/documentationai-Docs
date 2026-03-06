@@ -9,6 +9,16 @@ description: Release notes for Netfluss.
 Track Netfluss updates, new features, and bug fixes across all released versions.
 </Callout>
 
+<Update label="2026-03-06" description="Netfluss 1.9.2" tags={["feature", "bugfix", "improvement"]}>
+## What's new
+- Switched DNS changes and Ethernet reconnects to use Touch ID when available instead of the admin password dialog, falling back to a password prompt when Touch ID is unavailable.
+- Added a Touch ID toggle for DNS-related actions in Preferences → DNS Switcher so you control whether Netfluss asks for Touch ID or always uses the password dialog.
+
+## Bug fixes
+- Made the preferences window resizable so it fits better on smaller screens.
+- Documented a macOS and SwiftUI limitation where the resize cursor may not appear at the window edges, while confirming that dragging the edges still resizes the window correctly.
+</Update>
+
 <Update label="2026-03-06" description="Netfluss 1.9.1" tags={["bugfix", "improvement"]}>
 ## What's new
 - Ensured the External IP shows IPv4 by default so dual-stack connections no longer default to IPv6 in the menu bar.
