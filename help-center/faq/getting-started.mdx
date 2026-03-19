@@ -19,6 +19,22 @@ When you click the menu bar item, Netfluss also shows:
 
 </Expandable>
 
+<Expandable title="What is Fritz!Box Bandwidth Monitoring (Experimental)?">
+
+Fritz!Box Bandwidth Monitoring shows total WAN download and upload rates from your Fritz!Box router directly in the Netfluss popover, alongside your Mac's own adapter traffic.
+
+Netfluss queries your Fritz!Box using the official TR-064 API. For bandwidth data, this feature does not require authentication, so you do not need to enter your Fritz!Box username or password.
+
+Enable the feature in Preferences → Fritz!Box Bandwidth. There you can also configure the router address if your Fritz!Box is not reachable at the default `fritz.box` hostname.
+
+<Callout kind="info">
+
+Fritz!Box Bandwidth Monitoring is marked as experimental. Expect minor glitches or behavior changes in future Netfluss releases as it evolves.
+
+</Callout>
+
+</Expandable>
+
 <Expandable title="Is Netfluss free and open source? What license does it use?">
 
 Netfluss is free to use and open source. The entire app is written in Swift and published on GitHub.
@@ -165,6 +181,14 @@ Open the Netfluss popover and look for the DNS section to switch between built-i
 When you apply a new DNS preset, Netfluss uses Touch ID authentication for the change when Touch ID is available, instead of showing an admin password dialog. If your Mac does not support Touch ID or it is unavailable, macOS falls back to the standard admin password prompt.
 
 In Preferences → DNS Switcher, you can control how DNS authentication behaves and which presets are enabled and shown, as well as reorder them to match how you prefer to switch DNS providers.
+
+</Expandable>
+
+<Expandable title="How do I edit a custom DNS preset?">
+
+In Netfluss 1.10 and later, you can edit custom DNS presets after you create them, including the preset name and DNS server addresses.
+
+Open Preferences → DNS Switcher and find the custom preset you want to change. Click the pencil icon next to that preset to update its details, then save your changes to apply the new name or servers the next time you switch to that preset.
 
 </Expandable>
 

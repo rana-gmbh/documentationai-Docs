@@ -1,6 +1,6 @@
 ---
 title: Fix install and runtime issues
-description: Diagnose and fix common Netfluss problems including install errors, jumping menu bar layouts, external IP issues, cluttered Top Apps, adapter behavior, and stuck popover buttons.
+description: Diagnose and fix common Netfluss problems including install errors, jumping menu bar layouts, external IP issues, cluttered Top Apps, adapter behavior, Fritz!Box bandwidth, and stuck popover buttons.
 ---
 
 ## App will not open or shows a Gatekeeper or damaged app warning
@@ -281,6 +281,52 @@ From version 1.7, the adapter list in the popover scrolls when more than six int
 </Steps>
 
 If adapter clutter remains a problem with heavy VPN usage, consider limiting which VPN tools run at the same time so they create fewer simultaneous virtual interfaces.
+
+---
+
+## Fritz!Box bandwidth data is missing or not updating
+
+Fritz!Box Bandwidth Monitoring shows the total WAN download and upload rates from your Fritz!Box router directly in the Netfluss popover.
+
+<Callout kind="info">
+
+Netfluss queries Fritz!Box bandwidth via the official TR-064 API. Fritz!Box does not require authentication for this specific bandwidth data, so Netfluss does not need your router password for the feature to work.
+
+</Callout>
+
+<Callout kind="info">
+
+Fritz!Box Bandwidth Monitoring is experimental in Netfluss 1.10. Expect some rough edges and share feedback or bug reports so the feature can improve.
+
+</Callout>
+
+<Steps>
+  <Step title="Enable Fritz!Box Bandwidth Monitoring in preferences" icon="settings" titleType="p">
+
+    - Open the Netfluss popover and go to **Preferences → Fritz!Box Bandwidth**.
+    - Turn on the Fritz!Box Bandwidth Monitoring option if it is disabled.
+    - Return to the popover and wait a few seconds to see if Fritz!Box download and upload rates start appearing.
+
+  </Step>
+
+  <Step title="Confirm the Fritz!Box router address" icon="monitor" titleType="p">
+
+    - In **Preferences → Fritz!Box Bandwidth**, check the router address field.
+    - Use `fritz.box` if you use the default Fritz!Box hostname, or enter your router's IP address if you changed it.
+    - Save the preferences and watch the Netfluss popover to see whether the Fritz!Box bandwidth values begin updating.
+
+  </Step>
+
+  <Step title="Verify Fritz!Box is reachable from your Mac" icon="terminal" titleType="p">
+
+    - Make sure your Mac is connected to the same network as the Fritz!Box (typically the home Wi‑Fi or LAN).
+    - Open a browser and try loading `http://fritz.box` or your configured router address to confirm the router responds.
+    - If the router page does not load, fix the network or address issue first and then check the Fritz!Box bandwidth section in Netfluss again.
+
+  </Step>
+</Steps>
+
+If Fritz!Box bandwidth still shows no data or does not refresh after confirming preferences and connectivity, note your Netfluss version, Fritz!Box model, and router firmware version and share feedback via the GitHub issue tracker.
 
 ---
 
