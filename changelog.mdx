@@ -9,6 +9,29 @@ description: Release notes for Netfluss.
 Track Netfluss updates, new features, and bug fixes across all released versions.
 </Callout>
 
+<Update label="2026-03-27" description="Netfluss 1.11" tags={["feature", "improvement"]}>
+## What's new
+
+- Added experimental **UniFi Bandwidth Monitoring** that tracks WAN download and upload rates from UniFi gateways (UDM, USG, UXG).
+- Authenticates UniFi routers via the UniFi OS REST API, storing credentials securely in the macOS Keychain and supporting both UniFi OS and legacy controller setups.
+- Added experimental **OpenWrt Bandwidth Monitoring** that shows WAN download and upload rates from OpenWrt routers.
+- Connected to OpenWrt using the ubus JSON-RPC API with automatic session management, keeping router credentials stored securely in the macOS Keychain.
+- Improved Fritz!Box support so Netfluss auto-detects the Fritz!Box router address from the default gateway, reducing manual configuration.
+- Expanded menu bar layout options with a pinned unit so you can lock the display to KB/s, MB/s, or GB/s (bits or bytes) instead of auto-scaling.
+- Added menu bar decimal controls so you can choose 0, 1, 2, or 3 fixed decimal places or let Netfluss decide automatically.
+- Included **Black** as a new color option for upload and download labels in the menu bar.
+- Fixed arrow alignment for proportional system fonts (System and Rounded) so arrows line up cleanly next to bandwidth values.
+- Made the popover scrollable and resizable so it works better on smaller screens and with many active adapters.
+
+## Improvements
+
+- Reduced CPU and energy usage by caching expensive operations: interface info (~30s), Wi‑Fi details (~5s), netstat (~3s), DNS checks (~10s), and router polling (~5s) instead of recalculating every tick.
+- Reused shared system resources such as `SCDynamicStore` instead of recreating them each update, cutting overhead on every refresh.
+- Cached PID-to-name lookups across netstat samples so Netfluss resolves process names less often while keeping Top Apps accurate.
+- Cached the menu bar font and moved JSON decoding work out of the SwiftUI render path to keep UI updates lightweight.
+- Reduced overall CPU wake-ups and background work to lower Netfluss energy impact on battery-powered Macs.
+</Update>
+
 <Update label="2026-03-19" description="Netfluss 1.10" tags={["feature", "improvement"]}>
 ## What's new
 - Added experimental Fritz!Box Bandwidth Monitoring that shows total WAN download and upload rates from your Fritz!Box router directly in the Netfluss popover.

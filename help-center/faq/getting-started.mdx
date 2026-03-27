@@ -35,6 +35,26 @@ Fritz!Box Bandwidth Monitoring is marked as experimental. Expect minor glitches 
 
 </Expandable>
 
+<Expandable title="Why do UniFi and OpenWrt monitoring require credentials and how are they stored?">
+
+UniFi and OpenWrt monitoring in Netfluss 1.11 use authenticated access to your local controller or router to read bandwidth and metrics. These devices do not expose the required data anonymously, so Netfluss needs valid credentials to log in and query their APIs.
+
+Netfluss stores these credentials in Apple Keychain instead of plain preferences files. Keychain encrypts your passwords, integrates with macOS access controls, and avoids keeping sensitive data in readable configuration files on disk.
+
+Netfluss uses the stored credentials only on your Mac to talk directly to your UniFi controller or OpenWrt router. The credentials are not sent to Netfluss servers or shared externally.
+
+Authentication runs entirely in the background through direct API calls and does not open a browser window or OAuth-style popup. For UniFi, Netfluss sends an HTTP POST request to `/api/auth/login`, receives a session cookie, and then uses that cookie on each poll to call `/stat/device` for updated stats. If your UniFi controller uses a self-signed TLS certificate, Netfluss still connects by using custom insecure TLS handling for that specific connection so HTTPS works without extra setup.
+
+For OpenWrt, Netfluss talks to the `ubus` JSON-RPC API over HTTP. It calls `session.login` on `/ubus` to obtain a token and then includes that token in subsequent `ubus` requests to read bandwidth data.
+
+<Callout kind="info">
+
+If you want to reset UniFi or OpenWrt credentials, remove the related entries from Apple Keychain or update them in Netfluss by re-entering your login details. Netfluss will then store the new credentials locally again.
+
+</Callout>
+
+</Expandable>
+
 <Expandable title="Is Netfluss free and open source? What license does it use?">
 
 Netfluss is free to use and open source. The entire app is written in Swift and published on GitHub.

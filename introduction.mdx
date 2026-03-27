@@ -41,7 +41,13 @@ Netfluss focuses on low-friction, always-available network visibility in the men
 
 - **Fritz!Box Bandwidth Monitoring (experimental)**, which reads total WAN upload and download rates from your Fritz!Box router via the official TR-064 API (no authentication for bandwidth data) and shows them in the Netfluss popover with progress bars relative to your line speed; enable this in Preferences → Fritz!Box Bandwidth and, if needed, change the router address (default: `fritz.box`).
 
+- **UniFi and OpenWrt monitoring**, which connects to your local UniFi controller or OpenWrt router with authentication to read WAN bandwidth metrics and show them alongside your Mac traffic in the Netfluss popover; Netfluss stores the required credentials securely in your Apple Keychain.
+
 - **At-a-glance status** without opening Activity Monitor or a full network tool.
+
+<Callout kind="info">
+  Netfluss keeps UniFi and OpenWrt credentials only in your local Apple Keychain and uses them solely to communicate with your local controller or router.
+</Callout>
 
 You control when to open the detailed view from the menu bar, keeping your desktop uncluttered while still having network insights a click away.
 

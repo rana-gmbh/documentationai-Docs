@@ -330,6 +330,54 @@ If Fritz!Box bandwidth still shows no data or does not refresh after confirming 
 
 ---
 
+## UniFi or OpenWrt monitoring is missing or will not connect
+
+UniFi and OpenWrt monitoring in Netfluss 1.11 rely on reaching your local controller or router, using valid credentials, and reading stored credentials from Apple Keychain.
+
+<Callout kind="info">
+
+Netfluss stores UniFi and OpenWrt credentials in Apple Keychain so macOS can encrypt them and control access. Netfluss uses these credentials locally on your Mac and does not send them to any external service.
+
+</Callout>
+
+<Steps>
+  <Step title="Confirm the controller or router is reachable" icon="monitor" titleType="p">
+
+    - Make sure your Mac is connected to the same network as your UniFi controller or OpenWrt router.
+    - Open a browser and try loading the UniFi controller URL or the OpenWrt LuCI web interface using the same host and port you configured in Netfluss.
+    - If the page does not load, fix the network or address issue first, then return to Netfluss and check the UniFi or OpenWrt section again.
+
+  </Step>
+
+  <Step title="Re-enter UniFi or OpenWrt credentials in Netfluss" icon="edit" titleType="p">
+
+    - Open the Netfluss popover and go to **Preferences** for UniFi or OpenWrt monitoring.
+    - Carefully re-enter the hostname, username, password, and any required port or protocol fields.
+    - Save the preferences and wait a few seconds to see whether Netfluss begins showing UniFi or OpenWrt metrics.
+
+  </Step>
+
+  <Step title="Allow Apple Keychain access when prompted" icon="shield" titleType="p">
+
+    - If macOS shows a dialog asking whether Netfluss may access a Keychain item related to UniFi or OpenWrt, choose to allow access.
+    - Select the option that allows Netfluss to access this item every time to avoid repeated prompts.
+    - After allowing access, watch the Netfluss popover to confirm that UniFi or OpenWrt monitoring updates.
+
+  </Step>
+
+  <Step title="Reset stored credentials in Apple Keychain" icon="trash" titleType="p">
+
+    - Open the **Keychain Access** app on your Mac and search for entries whose names mention Netfluss and UniFi or OpenWrt.
+    - Delete the specific Netfluss UniFi or OpenWrt Keychain item, leaving other unrelated items intact.
+    - Return to Netfluss preferences for UniFi or OpenWrt monitoring, re-enter your credentials, and save again so Netfluss can create a fresh Keychain entry.
+
+  </Step>
+</Steps>
+
+If UniFi or OpenWrt monitoring still does not connect after these steps, note your Netfluss version, UniFi or OpenWrt firmware version, and any error text shown in Netfluss, then share details via the GitHub issue tracker.
+
+---
+
 ## Popover buttons are unresponsive after using About or Preferences
 
 Older versions of Netfluss had a bug where, after opening and closing the About window, footer buttons in the popover could stop responding.
