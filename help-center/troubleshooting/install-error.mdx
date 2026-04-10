@@ -1,6 +1,6 @@
 ---
 title: Fix install and runtime issues
-description: Diagnose and fix common Netfluss problems including install errors, jumping menu bar layouts, external IP issues, cluttered Top Apps, adapter behavior, Fritz!Box bandwidth, and stuck popover buttons.
+description: Diagnose and fix common NetFluss problems including install errors, jumping menu bar layouts, external IP issues, cluttered Top Apps, adapter behavior, Fritz!Box bandwidth, and stuck popover buttons.
 ---
 
 ## App will not open or shows a Gatekeeper or damaged app warning
@@ -9,74 +9,74 @@ Gatekeeper sometimes blocks apps downloaded from the internet, or reports that t
 
 <Callout kind="info">
 
-Netfluss is notarized and signed with a Developer ID. Gatekeeper should allow it to run once macOS recognizes it as an installed application.
+NetFluss is notarized and signed with a Developer ID. Gatekeeper should allow it to run once macOS recognizes it as an installed application.
 
 </Callout>
 
 <Steps>
-  <Step title="Move Netfluss to Applications" icon="folder" titleType="p">
+  <Step title="Move NetFluss to Applications" icon="folder" titleType="p">
 
-    - Drag `Netfluss.app` into your `/Applications` folder if it is not already there.
-    - Launch Netfluss from `/Applications` or Spotlight instead of running it from the Downloads folder.
+    - Drag `NetFluss.app` into your `/Applications` folder if it is not already there.
+    - Launch NetFluss from `/Applications` or Spotlight instead of running it from the Downloads folder.
 
   </Step>
 
   <Step title="Re-download from the official release" icon="download" titleType="p">
 
-    - Delete the existing `Netfluss.app`.
-    - Download the latest zip from the official Netfluss releases page.
-    - Unzip the download and move the new `Netfluss.app` into `/Applications` again.
+    - Delete the existing `NetFluss.app`.
+    - Download the latest zip from the official NetFluss releases page.
+    - Unzip the download and move the new `NetFluss.app` into `/Applications` again.
 
   </Step>
 
   <Step title="Override the first launch warning" icon="shield" titleType="p">
 
-    - Try to open Netfluss. If macOS shows a warning, open **System Settings → Privacy & Security**.
-    - Scroll to the security section and look for a message about Netfluss being blocked.
-    - Click **Allow Anyway**, then launch Netfluss again from `/Applications`.
+    - Try to open NetFluss. If macOS shows a warning, open **System Settings → Privacy & Security**.
+    - Scroll to the security section and look for a message about NetFluss being blocked.
+    - Click **Allow Anyway**, then launch NetFluss again from `/Applications`.
 
   </Step>
 </Steps>
 
-If Netfluss still does not open after reinstalling and allowing it in Privacy & Security, capture any exact error text and contact support.
+If NetFluss still does not open after reinstalling and allowing it in Privacy & Security, capture any exact error text and contact support.
 
 ---
 
-## Netfluss icon is missing from the menu bar
+## NetFluss icon is missing from the menu bar
 
-Netfluss runs as a menu bar app. If you do not see the icon, either the app is not running or macOS is hiding the icon.
+NetFluss runs as a menu bar app. If you do not see the icon, either the app is not running or macOS is hiding the icon.
 
 <Steps>
-  <Step title="Confirm Netfluss is running" icon="terminal" titleType="p">
+  <Step title="Confirm NetFluss is running" icon="terminal" titleType="p">
 
-    - Open **Activity Monitor** and search for `Netfluss`.
-    - If you do not see it, open `/Applications/Netfluss.app` again.
+    - Open **Activity Monitor** and search for `NetFluss`.
+    - If you do not see it, open `/Applications/NetFluss.app` again.
 
   </Step>
 
   <Step title="Reveal hidden menu bar icons" icon="monitor" titleType="p">
 
     - On macOS, some menu bar icons hide behind a chevron or section on the right.
-    - Click any chevron or overflow indicator in the menu bar and look for the Netfluss icon.
+    - Click any chevron or overflow indicator in the menu bar and look for the NetFluss icon.
     - Drag the icon out to pin it, if macOS allows reordering.
 
   </Step>
 
-  <Step title="Quit and relaunch Netfluss" icon="refresh-cw" titleType="p">
+  <Step title="Quit and relaunch NetFluss" icon="refresh-cw" titleType="p">
 
-    - If you see Netfluss in Activity Monitor but not in the menu bar, quit the process from Activity Monitor.
-    - Relaunch `/Applications/Netfluss.app` and watch for the icon to appear in the menu bar.
+    - If you see NetFluss in Activity Monitor but not in the menu bar, quit the process from Activity Monitor.
+    - Relaunch `/Applications/NetFluss.app` and watch for the icon to appear in the menu bar.
 
   </Step>
 </Steps>
 
-If the icon still does not appear, try restarting macOS and launching Netfluss again after the restart.
+If the icon still does not appear, try restarting macOS and launching NetFluss again after the restart.
 
 ---
 
 ## Preferences window is too large or does not seem resizable
 
-On smaller screens, the Netfluss preferences window can feel too tall to reach the lowest checkboxes or controls.
+On smaller screens, the NetFluss preferences window can feel too tall to reach the lowest checkboxes or controls.
 
 <Callout kind="info">
 
@@ -85,12 +85,12 @@ From version 1.9.2, the preferences window is resizable on smaller screens. You 
 </Callout>
 
 <Steps>
-  <Step title="Update to Netfluss 1.9.2 or later" icon="download" titleType="p">
+  <Step title="Update to NetFluss 1.9.2 or later" icon="download" titleType="p">
 
-    - Quit Netfluss if it is running.
-    - Download Netfluss 1.9.2 or a later version from the official releases page.
-    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
-    - Open **Preferences** from the Netfluss popover or menu.
+    - Quit NetFluss if it is running.
+    - Download NetFluss 1.9.2 or a later version from the official releases page.
+    - Move the new `NetFluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Open **Preferences** from the NetFluss popover or menu.
 
   </Step>
 
@@ -109,14 +109,14 @@ If the window still does not resize after updating to 1.9.2 or later, confirm yo
 
 ## Menu bar or popover jumps when speeds change
 
-A layout bug in older Netfluss versions can cause the menu bar label or popover to shift left and right as the numbers change width, for example when speeds move from `999 KB/s` to `1.2 MB/s`.
+A layout bug in older NetFluss versions can cause the menu bar label or popover to shift left and right as the numbers change width, for example when speeds move from `999 KB/s` to `1.2 MB/s`.
 
 <Steps>
-  <Step title="Update to Netfluss 1.9 or later" icon="download" titleType="p">
+  <Step title="Update to NetFluss 1.9 or later" icon="download" titleType="p">
 
-    - Quit Netfluss if it is running.
-    - Download Netfluss 1.9 or later from the official releases page.
-    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Quit NetFluss if it is running.
+    - Download NetFluss 1.9 or later from the official releases page.
+    - Move the new `NetFluss.app` into `/Applications`, replacing the old version, and launch it again.
     - Watch the menu bar while speeds change to confirm that the icons and popover now stay in a fixed position.
 
   </Step>
@@ -138,7 +138,7 @@ Users have reported seeing an empty Top Apps view even though the feature is ena
 
 <Callout kind="info">
 
-On macOS 15, Top Apps requires Netfluss 1.7.1 or later. A bug in earlier Netfluss versions on macOS 15 can prevent Top Apps from showing data even when connections are active.
+On macOS 15, Top Apps requires NetFluss 1.7.1 or later. A bug in earlier NetFluss versions on macOS 15 can prevent Top Apps from showing data even when connections are active.
 
 </Callout>
 
@@ -146,20 +146,20 @@ On macOS 15, Top Apps requires Netfluss 1.7.1 or later. A bug in earlier Netflus
   <Step title="Generate active network traffic" icon="zap" titleType="p">
 
     - Open a browser and load a few websites, start a video stream, or download a file.
-    - Keep the traffic running while you view the Netfluss popover.
+    - Keep the traffic running while you view the NetFluss popover.
 
   </Step>
 
   <Step title="Confirm Top Apps is enabled" icon="settings" titleType="p">
 
-    - Open the Netfluss popover and go to its preferences or settings.
+    - Open the NetFluss popover and go to its preferences or settings.
     - Ensure the Top Apps feature is turned on.
 
   </Step>
 
-  <Step title="Reopen the Netfluss popover" icon="play-circle" titleType="p">
+  <Step title="Reopen the NetFluss popover" icon="play-circle" titleType="p">
 
-    - Close the popover if it is open, then click the Netfluss menu bar icon again.
+    - Close the popover if it is open, then click the NetFluss menu bar icon again.
     - Check whether apps with active TCP or UDP connections now appear in the Top Apps list.
 
   </Step>
@@ -176,7 +176,7 @@ Background services such as `mDNSResponder` or other system daemons can appear i
 <Steps>
   <Step title="Hide noisy background apps from Top Apps" icon="minus" titleType="p">
 
-    - Open the Netfluss popover and go to **Preferences → Top Apps**.
+    - Open the NetFluss popover and go to **Preferences → Top Apps**.
     - In **Apps to Hide**, find and select the background processes you do not want to see.
     - Remember that this list shows processes that used bandwidth in the last 60 seconds, so recently active apps appear here.
     - Return to the popover and confirm that the hidden apps no longer take up slots in the Top Apps list, leaving more room for the apps you care about.
@@ -194,23 +194,23 @@ Wi‑Fi SSID and band information come from CoreWLAN, which on macOS can require
 
 <Callout kind="alert">
 
-If you deny Location Services access when macOS first prompts for it, Netfluss cannot show SSID or band details until you re-enable access in System Settings.
+If you deny Location Services access when macOS first prompts for it, NetFluss cannot show SSID or band details until you re-enable access in System Settings.
 
 </Callout>
 
 <Steps>
   <Step title="Look for the Location Services prompt" icon="info" titleType="p">
 
-    - The first time Netfluss tries to read Wi‑Fi SSID details, macOS may show a Location Services dialog.
-    - When prompted, grant access so Netfluss can display SSID and band information.
+    - The first time NetFluss tries to read Wi‑Fi SSID details, macOS may show a Location Services dialog.
+    - When prompted, grant access so NetFluss can display SSID and band information.
 
   </Step>
 
   <Step title="Re-enable access in System Settings" icon="settings" titleType="p">
 
     - Open **System Settings → Privacy & Security → Location Services**.
-    - Find Netfluss in the app list and enable Location Services for it.
-    - Restart Netfluss and check the Wi‑Fi SSID and band fields again.
+    - Find NetFluss in the app list and enable Location Services for it.
+    - Restart NetFluss and check the Wi‑Fi SSID and band fields again.
 
   </Step>
 </Steps>
@@ -224,20 +224,20 @@ If the SSID or band are still blank after granting Location Services access, ver
 External IP issues usually fall into two categories: the IP address is blank, or the address shows IPv6 when you want to see IPv4 instead.
 
 <Steps>
-  <Step title="Update to Netfluss 1.9 or later for reliable External IP" icon="download" titleType="p">
+  <Step title="Update to NetFluss 1.9 or later for reliable External IP" icon="download" titleType="p">
 
-    - Quit Netfluss if it is running.
-    - Download Netfluss 1.9 or later from the official releases page.
-    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
-    - Check the External IP section in the popover to confirm that an address now appears consistently. Netfluss 1.9 uses ipwho.is with an api.ipify.org fallback for improved reliability.
+    - Quit NetFluss if it is running.
+    - Download NetFluss 1.9 or later from the official releases page.
+    - Move the new `NetFluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Check the External IP section in the popover to confirm that an address now appears consistently. NetFluss 1.9 uses ipwho.is with an api.ipify.org fallback for improved reliability.
 
   </Step>
 
   <Step title="Choose IPv4 or IPv6 in Appearance preferences" icon="settings" titleType="p">
 
-    - Open the Netfluss popover and go to **Preferences → Appearance**.
+    - Open the NetFluss popover and go to **Preferences → Appearance**.
     - Find the **External IP** setting and choose whether to display your external IPv4 or IPv6 address.
-    - On dual-stack networks, Netfluss 1.9.1 and later default to IPv4, but you can switch to IPv6 if you prefer.
+    - On dual-stack networks, NetFluss 1.9.1 and later default to IPv4, but you can switch to IPv6 if you prefer.
     - Return to the popover and verify that the External IP now shows the IP version you selected.
 
   </Step>
@@ -249,7 +249,7 @@ If the External IP field is still blank after updating and checking preferences,
 
 ## Too many adapters and scrolling behavior
 
-VPN clients and other tools often create many virtual network adapters. Netfluss lets you rename, reorder, and hide adapters, and caps the visible list so the popover remains usable.
+VPN clients and other tools often create many virtual network adapters. NetFluss lets you rename, reorder, and hide adapters, and caps the visible list so the popover remains usable.
 
 <Callout kind="info">
 
@@ -260,7 +260,7 @@ From version 1.7, the adapter list in the popover scrolls when more than six int
 <Steps>
   <Step title="Rename and reorder important adapters" icon="edit" titleType="p">
 
-    - Use Netfluss preferences to rename adapters that matter to you and move them near the top of the list.
+    - Use NetFluss preferences to rename adapters that matter to you and move them near the top of the list.
     - Keep in mind that some VPN tools create new interfaces each time they connect, so names might not stay attached to the same underlying device, as reported in issue 6.
 
   </Step>
@@ -286,24 +286,24 @@ If adapter clutter remains a problem with heavy VPN usage, consider limiting whi
 
 ## Fritz!Box bandwidth data is missing or not updating
 
-Fritz!Box Bandwidth Monitoring shows the total WAN download and upload rates from your Fritz!Box router directly in the Netfluss popover.
+Fritz!Box Bandwidth Monitoring shows the total WAN download and upload rates from your Fritz!Box router directly in the NetFluss popover.
 
 <Callout kind="info">
 
-Netfluss queries Fritz!Box bandwidth via the official TR-064 API. Fritz!Box does not require authentication for this specific bandwidth data, so Netfluss does not need your router password for the feature to work.
+NetFluss queries Fritz!Box bandwidth via the official TR-064 API. Fritz!Box does not require authentication for this specific bandwidth data, so NetFluss does not need your router password for the feature to work.
 
 </Callout>
 
 <Callout kind="info">
 
-Fritz!Box Bandwidth Monitoring is experimental in Netfluss 1.10. Expect some rough edges and share feedback or bug reports so the feature can improve.
+Fritz!Box Bandwidth Monitoring is experimental in NetFluss 1.10. Expect some rough edges and share feedback or bug reports so the feature can improve.
 
 </Callout>
 
 <Steps>
   <Step title="Enable Fritz!Box Bandwidth Monitoring in preferences" icon="settings" titleType="p">
 
-    - Open the Netfluss popover and go to **Preferences → Fritz!Box Bandwidth**.
+    - Open the NetFluss popover and go to **Preferences → Fritz!Box Bandwidth**.
     - Turn on the Fritz!Box Bandwidth Monitoring option if it is disabled.
     - Return to the popover and wait a few seconds to see if Fritz!Box download and upload rates start appearing.
 
@@ -313,7 +313,7 @@ Fritz!Box Bandwidth Monitoring is experimental in Netfluss 1.10. Expect some rou
 
     - In **Preferences → Fritz!Box Bandwidth**, check the router address field.
     - Use `fritz.box` if you use the default Fritz!Box hostname, or enter your router's IP address if you changed it.
-    - Save the preferences and watch the Netfluss popover to see whether the Fritz!Box bandwidth values begin updating.
+    - Save the preferences and watch the NetFluss popover to see whether the Fritz!Box bandwidth values begin updating.
 
   </Step>
 
@@ -321,22 +321,22 @@ Fritz!Box Bandwidth Monitoring is experimental in Netfluss 1.10. Expect some rou
 
     - Make sure your Mac is connected to the same network as the Fritz!Box (typically the home Wi‑Fi or LAN).
     - Open a browser and try loading `http://fritz.box` or your configured router address to confirm the router responds.
-    - If the router page does not load, fix the network or address issue first and then check the Fritz!Box bandwidth section in Netfluss again.
+    - If the router page does not load, fix the network or address issue first and then check the Fritz!Box bandwidth section in NetFluss again.
 
   </Step>
 </Steps>
 
-If Fritz!Box bandwidth still shows no data or does not refresh after confirming preferences and connectivity, note your Netfluss version, Fritz!Box model, and router firmware version and share feedback via the GitHub issue tracker.
+If Fritz!Box bandwidth still shows no data or does not refresh after confirming preferences and connectivity, note your NetFluss version, Fritz!Box model, and router firmware version and share feedback via the GitHub issue tracker.
 
 ---
 
 ## UniFi or OpenWrt monitoring is missing or will not connect
 
-UniFi and OpenWrt monitoring in Netfluss 1.11 rely on reaching your local controller or router, using valid credentials, and reading stored credentials from Apple Keychain.
+UniFi and OpenWrt monitoring in NetFluss 1.11 rely on reaching your local controller or router, using valid credentials, and reading stored credentials from Apple Keychain.
 
 <Callout kind="info">
 
-Netfluss stores UniFi and OpenWrt credentials in Apple Keychain so macOS can encrypt them and control access. Netfluss uses these credentials locally on your Mac and does not send them to any external service.
+NetFluss stores UniFi and OpenWrt credentials in Apple Keychain so macOS can encrypt them and control access. NetFluss uses these credentials locally on your Mac and does not send them to any external service.
 
 </Callout>
 
@@ -344,43 +344,43 @@ Netfluss stores UniFi and OpenWrt credentials in Apple Keychain so macOS can enc
   <Step title="Confirm the controller or router is reachable" icon="monitor" titleType="p">
 
     - Make sure your Mac is connected to the same network as your UniFi controller or OpenWrt router.
-    - Open a browser and try loading the UniFi controller URL or the OpenWrt LuCI web interface using the same host and port you configured in Netfluss.
-    - If the page does not load, fix the network or address issue first, then return to Netfluss and check the UniFi or OpenWrt section again.
+    - Open a browser and try loading the UniFi controller URL or the OpenWrt LuCI web interface using the same host and port you configured in NetFluss.
+    - If the page does not load, fix the network or address issue first, then return to NetFluss and check the UniFi or OpenWrt section again.
 
   </Step>
 
-  <Step title="Re-enter UniFi or OpenWrt credentials in Netfluss" icon="edit" titleType="p">
+  <Step title="Re-enter UniFi or OpenWrt credentials in NetFluss" icon="edit" titleType="p">
 
-    - Open the Netfluss popover and go to **Preferences** for UniFi or OpenWrt monitoring.
+    - Open the NetFluss popover and go to **Preferences** for UniFi or OpenWrt monitoring.
     - Carefully re-enter the hostname, username, password, and any required port or protocol fields.
-    - Save the preferences and wait a few seconds to see whether Netfluss begins showing UniFi or OpenWrt metrics.
+    - Save the preferences and wait a few seconds to see whether NetFluss begins showing UniFi or OpenWrt metrics.
 
   </Step>
 
   <Step title="Allow Apple Keychain access when prompted" icon="shield" titleType="p">
 
-    - If macOS shows a dialog asking whether Netfluss may access a Keychain item related to UniFi or OpenWrt, choose to allow access.
-    - Select the option that allows Netfluss to access this item every time to avoid repeated prompts.
-    - After allowing access, watch the Netfluss popover to confirm that UniFi or OpenWrt monitoring updates.
+    - If macOS shows a dialog asking whether NetFluss may access a Keychain item related to UniFi or OpenWrt, choose to allow access.
+    - Select the option that allows NetFluss to access this item every time to avoid repeated prompts.
+    - After allowing access, watch the NetFluss popover to confirm that UniFi or OpenWrt monitoring updates.
 
   </Step>
 
   <Step title="Reset stored credentials in Apple Keychain" icon="trash" titleType="p">
 
-    - Open the **Keychain Access** app on your Mac and search for entries whose names mention Netfluss and UniFi or OpenWrt.
-    - Delete the specific Netfluss UniFi or OpenWrt Keychain item, leaving other unrelated items intact.
-    - Return to Netfluss preferences for UniFi or OpenWrt monitoring, re-enter your credentials, and save again so Netfluss can create a fresh Keychain entry.
+    - Open the **Keychain Access** app on your Mac and search for entries whose names mention NetFluss and UniFi or OpenWrt.
+    - Delete the specific NetFluss UniFi or OpenWrt Keychain item, leaving other unrelated items intact.
+    - Return to NetFluss preferences for UniFi or OpenWrt monitoring, re-enter your credentials, and save again so NetFluss can create a fresh Keychain entry.
 
   </Step>
 </Steps>
 
-If UniFi or OpenWrt monitoring still does not connect after these steps, note your Netfluss version, UniFi or OpenWrt firmware version, and any error text shown in Netfluss, then share details via the GitHub issue tracker.
+If UniFi or OpenWrt monitoring still does not connect after these steps, note your NetFluss version, UniFi or OpenWrt firmware version, and any error text shown in NetFluss, then share details via the GitHub issue tracker.
 
 ---
 
 ## Popover buttons are unresponsive after using About or Preferences
 
-Older versions of Netfluss had a bug where, after opening and closing the About window, footer buttons in the popover could stop responding.
+Older versions of NetFluss had a bug where, after opening and closing the About window, footer buttons in the popover could stop responding.
 
 <Callout kind="alert">
 
@@ -389,21 +389,21 @@ This bug was fixed in version 1.5 by changing window activation behavior. If you
 </Callout>
 
 <Steps>
-  <Step title="Update Netfluss to the latest version" icon="download" titleType="p">
+  <Step title="Update NetFluss to the latest version" icon="download" titleType="p">
 
-    - Quit Netfluss if it is running.
-    - Download the most recent release zip from the official Netfluss releases page.
-    - Move the new `Netfluss.app` into `/Applications`, replacing the old version, and launch it again.
+    - Quit NetFluss if it is running.
+    - Download the most recent release zip from the official NetFluss releases page.
+    - Move the new `NetFluss.app` into `/Applications`, replacing the old version, and launch it again.
 
   </Step>
 
   <Step title="Test the popover after updating" icon="check-circle" titleType="p">
 
-    - Click the Netfluss menu bar icon to open the popover.
+    - Click the NetFluss menu bar icon to open the popover.
     - Open the About or Preferences window, close it, and then try the footer buttons again.
     - Confirm that the buttons respond as expected.
 
   </Step>
 </Steps>
 
-If the popover still ignores clicks after updating, restart macOS and test again. If the issue persists, include your Netfluss version and macOS version when you contact support.
+If the popover still ignores clicks after updating, restart macOS and test again. If the issue persists, include your NetFluss version and macOS version when you contact support.

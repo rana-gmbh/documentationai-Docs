@@ -1,17 +1,17 @@
 ---
-title: Netfluss FAQ
-description: Answers to common Netfluss questions about features, macOS support, install methods, permissions, privacy, and troubleshooting.
+title: NetFluss FAQ
+description: Answers to common NetFluss questions about features, macOS support, install methods, permissions, privacy, and troubleshooting.
 ---
 
 ## Frequently asked questions
 
 <ExpandableGroup>
 
-<Expandable title="What is Netfluss and what does it show?">
+<Expandable title="What is NetFluss and what does it show?">
 
-Netfluss is a minimal macOS menu bar app that shows real-time upload and download rates across all active network adapters on your Mac.
+NetFluss is a minimal macOS menu bar app that shows real-time upload and download rates across all active network adapters on your Mac.
 
-When you click the menu bar item, Netfluss also shows:
+When you click the menu bar item, NetFluss also shows:
 
 - Current bandwidth per adapter (Wi‑Fi, Ethernet, VPN, and other virtual interfaces)
 - Important IP addresses, including local/router and external IPs
@@ -19,7 +19,7 @@ When you click the menu bar item, Netfluss also shows:
 
 </Expandable>
 
-<Expandable title="What is Bandwidth Statistics in Netfluss 2.0?">
+<Expandable title="What is Bandwidth Statistics in NetFluss 2.0?">
 
 Bandwidth Statistics is a dedicated window that shows historical bandwidth usage over time, instead of only the live rates in the menu bar popover.
 
@@ -29,35 +29,35 @@ The window includes:
 - Separate download and upload timelines
 - Top adapters and top apps for the selected range
 
-Statistics collection is optional and off by default. You can keep Netfluss running without collecting any statistics, or enable statistics and separately control whether app-level statistics are collected.
+Statistics collection is optional and off by default. You can keep NetFluss running without collecting any statistics, or enable statistics and separately control whether app-level statistics are collected.
 
-To open the Bandwidth Statistics window, right-click the Netfluss menu bar icon and choose `Bandwidth Statistics`.
+To open the Bandwidth Statistics window, right-click the NetFluss menu bar icon and choose `Bandwidth Statistics`.
 
 </Expandable>
 
 <Expandable title="How does the built-in Speed Test work and where is the history stored?">
 
-The built-in Speed Test lets you measure your internet connection directly from Netfluss without opening a browser or separate app.
+The built-in Speed Test lets you measure your internet connection directly from NetFluss without opening a browser or separate app.
 
-From the Netfluss menu bar icon, right-click and choose `Run Speed Test…` to open the dedicated Speed Test window. Netfluss runs the test using either the M-Lab or Cloudflare provider, and it remembers your last selected provider for the next run.
+From the NetFluss menu bar icon, right-click and choose `Run Speed Test…` to open the dedicated Speed Test window. NetFluss runs the test using either the M-Lab or Cloudflare provider, and it remembers your last selected provider for the next run.
 
 Each completed speed test is saved locally in Speed Test History. You can compare results by date, provider, download speed, upload speed, and latency to see how your connection performs over time.
 
 </Expandable>
 
-<Expandable title="Does Netfluss check for updates automatically?">
+<Expandable title="Does NetFluss check for updates automatically?">
 
-Netfluss supports optional automatic update checks against GitHub so you do not have to manually look up new releases.
+NetFluss supports optional automatic update checks against GitHub so you do not have to manually look up new releases.
 
-Go to Preferences → Update and enable `Check GitHub for updates automatically` to let Netfluss check once per day whether a newer version is available. Automatic checks only read release information from GitHub; they do not install updates without your action.
+Go to Preferences → Update and enable `Check GitHub for updates automatically` to let NetFluss check once per day whether a newer version is available. Automatic checks only read release information from GitHub; they do not install updates without your action.
 
 If you prefer manual control, leave the automatic toggle off and use the existing manual update check in the About window whenever you want to see if a new version is available.
 
 </Expandable>
 
-<Expandable title="What are the new menu bar styles and color controls in Netfluss 1.12?">
+<Expandable title="What are the new menu bar styles and color controls in NetFluss 1.12?">
 
-Netfluss 1.12 adds more control over how the menu bar display looks, so you can match it to your macOS setup and personal preference.
+NetFluss 1.12 adds more control over how the menu bar display looks, so you can match it to your macOS setup and personal preference.
 
 You can choose between these menu bar icon styles:
 
@@ -66,7 +66,7 @@ You can choose between these menu bar icon styles:
 - Dashboard
 - Icon
 
-In addition to the layout styles, Netfluss 1.12 introduces separate color controls for:
+In addition to the layout styles, NetFluss 1.12 introduces separate color controls for:
 
 - Upload arrow
 - Download arrow
@@ -79,15 +79,15 @@ Use these options to tune both the shape and coloring of the menu bar item witho
 
 <Expandable title="What is Fritz!Box Bandwidth Monitoring (Experimental)?">
 
-Fritz!Box Bandwidth Monitoring shows total WAN download and upload rates from your Fritz!Box router directly in the Netfluss popover, alongside your Mac's own adapter traffic.
+Fritz!Box Bandwidth Monitoring shows total WAN download and upload rates from your Fritz!Box router directly in the NetFluss popover, alongside your Mac's own adapter traffic.
 
-Netfluss queries your Fritz!Box using the official TR-064 API. For bandwidth data, this feature does not require authentication, so you do not need to enter your Fritz!Box username or password.
+NetFluss queries your Fritz!Box using the official TR-064 API. For bandwidth data, this feature does not require authentication, so you do not need to enter your Fritz!Box username or password.
 
 Enable the feature in Preferences → Fritz!Box Bandwidth. There you can also configure the router address if your Fritz!Box is not reachable at the default `fritz.box` hostname.
 
 <Callout kind="info">
 
-Fritz!Box Bandwidth Monitoring is marked as experimental. Expect minor glitches or behavior changes in future Netfluss releases as it evolves.
+Fritz!Box Bandwidth Monitoring is marked as experimental. Expect minor glitches or behavior changes in future NetFluss releases as it evolves.
 
 </Callout>
 
@@ -95,47 +95,47 @@ Fritz!Box Bandwidth Monitoring is marked as experimental. Expect minor glitches 
 
 <Expandable title="Why do UniFi and OpenWrt monitoring require credentials and how are they stored?">
 
-UniFi and OpenWrt monitoring in Netfluss 1.11 use authenticated access to your local controller or router to read bandwidth and metrics. These devices do not expose the required data anonymously, so Netfluss needs valid credentials to log in and query their APIs.
+UniFi and OpenWrt monitoring in NetFluss 1.11 use authenticated access to your local controller or router to read bandwidth and metrics. These devices do not expose the required data anonymously, so NetFluss needs valid credentials to log in and query their APIs.
 
-Netfluss stores these credentials in Apple Keychain instead of plain preferences files. Keychain encrypts your passwords, integrates with macOS access controls, and avoids keeping sensitive data in readable configuration files on disk.
+NetFluss stores these credentials in Apple Keychain instead of plain preferences files. Keychain encrypts your passwords, integrates with macOS access controls, and avoids keeping sensitive data in readable configuration files on disk.
 
-Netfluss uses the stored credentials only on your Mac to talk directly to your UniFi controller or OpenWrt router. The credentials are not sent to Netfluss servers or shared externally.
+NetFluss uses the stored credentials only on your Mac to talk directly to your UniFi controller or OpenWrt router. The credentials are not sent to NetFluss servers or shared externally.
 
-Authentication runs entirely in the background through direct API calls and does not open a browser window or OAuth-style popup. For UniFi, Netfluss sends an HTTP POST request to `/api/auth/login`, receives a session cookie, and then uses that cookie on each poll to call `/stat/device` for updated stats. If your UniFi controller uses a self-signed TLS certificate, Netfluss still connects by using custom insecure TLS handling for that specific connection so HTTPS works without extra setup.
+Authentication runs entirely in the background through direct API calls and does not open a browser window or OAuth-style popup. For UniFi, NetFluss sends an HTTP POST request to `/api/auth/login`, receives a session cookie, and then uses that cookie on each poll to call `/stat/device` for updated stats. If your UniFi controller uses a self-signed TLS certificate, NetFluss still connects by using custom insecure TLS handling for that specific connection so HTTPS works without extra setup.
 
-For OpenWrt, Netfluss talks to the `ubus` JSON-RPC API over HTTP. It calls `session.login` on `/ubus` to obtain a token and then includes that token in subsequent `ubus` requests to read bandwidth data.
+For OpenWrt, NetFluss talks to the `ubus` JSON-RPC API over HTTP. It calls `session.login` on `/ubus` to obtain a token and then includes that token in subsequent `ubus` requests to read bandwidth data.
 
 <Callout kind="info">
 
-If you want to reset UniFi or OpenWrt credentials, remove the related entries from Apple Keychain or update them in Netfluss by re-entering your login details. Netfluss will then store the new credentials locally again.
+If you want to reset UniFi or OpenWrt credentials, remove the related entries from Apple Keychain or update them in NetFluss by re-entering your login details. NetFluss will then store the new credentials locally again.
 
 </Callout>
 
 </Expandable>
 
-<Expandable title="Is Netfluss free and open source? What license does it use?">
+<Expandable title="Is NetFluss free and open source? What license does it use?">
 
-Netfluss is free to use and open source. The entire app is written in Swift and published on GitHub.
+NetFluss is free to use and open source. The entire app is written in Swift and published on GitHub.
 
-The project is licensed under an open-source license, which you can review directly in the `LICENSE` file in the Netfluss GitHub repository.
+The project is licensed under an open-source license, which you can review directly in the `LICENSE` file in the NetFluss GitHub repository.
 
 </Expandable>
 
-<Expandable title="Which macOS versions does Netfluss support?">
+<Expandable title="Which macOS versions does NetFluss support?">
 
-Netfluss requires macOS 13 Ventura or later. Earlier macOS versions are not supported.
+NetFluss requires macOS 13 Ventura or later. Earlier macOS versions are not supported.
 
 <Callout kind="info">
 
-If Netfluss does not launch or refuses to install on an older system, check your macOS version in `` → `About This Mac` and upgrade to macOS 13 or newer.
+If NetFluss does not launch or refuses to install on an older system, check your macOS version in `` → `About This Mac` and upgrade to macOS 13 or newer.
 
 </Callout>
 
 </Expandable>
 
-<Expandable title="How do I install Netfluss (Homebrew vs manual)?">
+<Expandable title="How do I install NetFluss (Homebrew vs manual)?">
 
-Install Netfluss in either of these ways:
+Install NetFluss in either of these ways:
 
 **Homebrew (recommended if you already use Homebrew):**
 
@@ -145,24 +145,24 @@ brew install --cask rana-gmbh/netfluss/netfluss
 
 **Manual install:**
 
-1. Download the latest Netfluss `.zip` from the releases section of the GitHub repository.
+1. Download the latest NetFluss `.zip` from the releases section of the GitHub repository.
 2. Unzip the archive.
-3. Move `Netfluss.app` into your `/Applications` folder.
-4. Launch Netfluss from Applications or Spotlight.
+3. Move `NetFluss.app` into your `/Applications` folder.
+4. Launch NetFluss from Applications or Spotlight.
 
-After installation, you should see the Netfluss icon appear in your menu bar. Click it to open the detailed view.
+After installation, you should see the NetFluss icon appear in your menu bar. Click it to open the detailed view.
 
 </Expandable>
 
 <Expandable title="Why does macOS ask for Location Services permission?">
 
-Netfluss uses the macOS CoreWLAN framework to show your Wi‑Fi SSID (network name) and band. On macOS, exposing SSID details through CoreWLAN is tied to Location Services.
+NetFluss uses the macOS CoreWLAN framework to show your Wi‑Fi SSID (network name) and band. On macOS, exposing SSID details through CoreWLAN is tied to Location Services.
 
-When Netfluss first tries to access Wi‑Fi SSID and band information, macOS may ask you to grant Location Services permission. If you deny this, Netfluss continues to work, but SSID-related details may be missing.
+When NetFluss first tries to access Wi‑Fi SSID and band information, macOS may ask you to grant Location Services permission. If you deny this, NetFluss continues to work, but SSID-related details may be missing.
 
 <Callout kind="info">
 
-Netfluss does not track or send your physical location. The Location Services prompt comes from macOS because SSID access is classified as location-related data.
+NetFluss does not track or send your physical location. The Location Services prompt comes from macOS because SSID access is classified as location-related data.
 
 </Callout>
 
@@ -170,12 +170,12 @@ Netfluss does not track or send your physical location. The Location Services pr
 
 <Expandable title="Where do the IP addresses come from?">
 
-Netfluss shows both internal and external IP information:
+NetFluss shows both internal and external IP information:
 
 - **Local/router IPs** come from your active network adapters on macOS.
 - **External IP** is looked up using `ipwho.is`, with `api.ipify.org` as a fallback service.
 
-Netfluss caches the external IP briefly to avoid unnecessary requests while keeping the value reasonably up to date. In Preferences → Appearance → External IP, you can choose whether Netfluss displays your external IPv4 or IPv6 address.
+NetFluss caches the external IP briefly to avoid unnecessary requests while keeping the value reasonably up to date. In Preferences → Appearance → External IP, you can choose whether NetFluss displays your external IPv4 or IPv6 address.
 
 </Expandable>
 
@@ -183,7 +183,7 @@ Netfluss caches the external IP briefly to avoid unnecessary requests while keep
 
 Connection Flow View shows a visual path from your Mac to your router and out to the internet, including a VPN tunnel if one is active. You can optionally show IP addresses at each hop and see a country flag for VPN exit nodes.
 
-Enable or disable Connection Flow View and its IP display options in Netfluss Preferences. Use it when you want a quick, visual check of how your traffic is routed, including whether a VPN is active and where it exits.
+Enable or disable Connection Flow View and its IP display options in NetFluss Preferences. Use it when you want a quick, visual check of how your traffic is routed, including whether a VPN is active and where it exits.
 
 </Expandable>
 
@@ -206,7 +206,7 @@ Then reopen or refresh the Top Apps view. If you still never see any entries eve
 
 <Callout kind="info">
 
-If you run macOS 15 and Top Apps stays empty, update to Netfluss 1.7.1 or later. Earlier Netfluss versions on macOS 15 include a bug that can prevent Top Apps from showing or updating.
+If you run macOS 15 and Top Apps stays empty, update to NetFluss 1.7.1 or later. Earlier NetFluss versions on macOS 15 include a bug that can prevent Top Apps from showing or updating.
 
 </Callout>
 
@@ -216,7 +216,7 @@ If you run macOS 15 and Top Apps stays empty, update to Netfluss 1.7.1 or later.
 
 Use app filtering in Top Apps to hide noisy background processes and focus on the traffic you care about.
 
-Go to Preferences → Top Apps → `Apps to Hide`. Netfluss builds this list from processes that used bandwidth in the last 60 seconds, so you normally see it populate after some recent network activity.
+Go to Preferences → Top Apps → `Apps to Hide`. NetFluss builds this list from processes that used bandwidth in the last 60 seconds, so you normally see it populate after some recent network activity.
 
 Add an app to `Apps to Hide` to remove it from the Top Apps view and free up space for other entries. Hidden apps no longer occupy one of the limited Top Apps slots, which makes it easier to monitor the tools and sites you actually want to track.
 
@@ -224,7 +224,7 @@ Add an app to `Apps to Hide` to remove it from the Top Apps view and free up spa
 
 <Expandable title="What are adapter and Top Apps grace periods?">
 
-Grace periods keep adapters and apps visible for a short time after they go idle, so lists do not flicker when traffic briefly stops. You can set Adapter Grace Period and Top Apps Grace Period to 3, 5, or 10 seconds in Netfluss Preferences.
+Grace periods keep adapters and apps visible for a short time after they go idle, so lists do not flicker when traffic briefly stops. You can set Adapter Grace Period and Top Apps Grace Period to 3, 5, or 10 seconds in NetFluss Preferences.
 
 Longer grace periods keep adapter cards and the Top Apps list more stable, while shorter grace periods make them react faster to changes. Adjust these values based on whether you prefer stability or immediacy in the UI.
 
@@ -232,7 +232,7 @@ Longer grace periods keep adapter cards and the Top Apps list more stable, while
 
 <Expandable title="Why do I see many adapters (VPN or virtual interfaces)?">
 
-Netfluss shows all active network adapters, including:
+NetFluss shows all active network adapters, including:
 
 - Physical adapters (Wi‑Fi, Ethernet)
 - VPN interfaces
@@ -240,7 +240,7 @@ Netfluss shows all active network adapters, including:
 
 Some VPN or networking tools create new virtual adapters frequently. In those cases, renaming a specific adapter may not persist because the tool replaces the interface with a new one.
 
-Use the Netfluss preferences to:
+Use the NetFluss preferences to:
 
 - Hide inactive adapters
 - Hide certain categories of adapters (such as VPN or virtual interfaces)
@@ -252,11 +252,11 @@ If you still see too many adapters, review your VPN or virtualization setup to r
 
 <Expandable title="What is the DNS Switcher and where do I find it?">
 
-DNS Switcher lets you change your active DNS provider directly from the Netfluss popover, without digging into macOS network settings.
+DNS Switcher lets you change your active DNS provider directly from the NetFluss popover, without digging into macOS network settings.
 
-Open the Netfluss popover and look for the DNS section to switch between built-in presets for Cloudflare, Google, Quad9, and OpenDNS. You can also define custom DNS presets in Preferences and choose which ones appear.
+Open the NetFluss popover and look for the DNS section to switch between built-in presets for Cloudflare, Google, Quad9, and OpenDNS. You can also define custom DNS presets in NetFluss Preferences and choose which ones appear.
 
-When you apply a new DNS preset, Netfluss uses Touch ID authentication for the change when Touch ID is available, instead of showing an admin password dialog. If your Mac does not support Touch ID or it is unavailable, macOS falls back to the standard admin password prompt.
+When you apply a new DNS preset, NetFluss uses Touch ID authentication for the change when Touch ID is available, instead of showing an admin password dialog. If your Mac does not support Touch ID or it is unavailable, macOS falls back to the standard admin password prompt.
 
 In Preferences → DNS Switcher, you can control how DNS authentication behaves and which presets are enabled and shown, as well as reorder them to match how you prefer to switch DNS providers.
 
@@ -264,7 +264,7 @@ In Preferences → DNS Switcher, you can control how DNS authentication behaves 
 
 <Expandable title="How do I edit a custom DNS preset?">
 
-In Netfluss 1.10 and later, you can edit custom DNS presets after you create them, including the preset name and DNS server addresses.
+In NetFluss 1.10 and later, you can edit custom DNS presets after you create them, including the preset name and DNS server addresses.
 
 Open Preferences → DNS Switcher and find the custom preset you want to change. Click the pencil icon next to that preset to update its details, then save your changes to apply the new name or servers the next time you switch to that preset.
 
@@ -272,15 +272,15 @@ Open Preferences → DNS Switcher and find the custom preset you want to change.
 
 <Expandable title="Why did the menu bar text used to jump or shift?">
 
-Earlier Netfluss versions could cause the menu bar layout to shift when the displayed speed changed width, for example from `999 KB/s` to `1.2 MB/s`. As the label grew or shrank, surrounding menu bar icons moved slightly.
+Earlier NetFluss versions could cause the menu bar layout to shift when the displayed speed changed width, for example from `999 KB/s` to `1.2 MB/s`. As the label grew or shrank, surrounding menu bar icons moved slightly.
 
-Netfluss 1.9 adds a fixed-width container for the menu bar display so the space is reserved in advance and the icons stay stable. If you still notice jumping or shifting, update to Netfluss 1.9 or later.
+NetFluss 1.9 adds a fixed-width container for the menu bar display so the space is reserved in advance and the icons stay stable. If you still notice jumping or shifting, update to NetFluss 1.9 or later.
 
 </Expandable>
 
 <Expandable title="Is the app notarized and signed?">
 
-Yes. Netfluss is notarized by Apple and signed with a Developer ID certificate.
+Yes. NetFluss is notarized by Apple and signed with a Developer ID certificate.
 
 This means Gatekeeper recognizes the app as coming from an identified developer, and you can run it on macOS without bypassing security checks.
 
@@ -288,12 +288,12 @@ This means Gatekeeper recognizes the app as coming from an identified developer,
 
 <Expandable title="Where can I report bugs or request features?">
 
-Report bugs, ask questions, or request features in the Netfluss GitHub repository by opening a new issue.
+Report bugs, ask questions, or request features in the NetFluss GitHub repository by opening a new issue.
 
 When you create an issue, include:
 
 - Your macOS version
-- The Netfluss version
+- The NetFluss version
 - A clear description of the problem or request
 - Screenshots or screen recordings, if relevant
 

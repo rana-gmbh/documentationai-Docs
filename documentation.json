@@ -42,7 +42,7 @@
             "expandable": false,
             "pages": [
               {
-                "title": "Netfluss FAQ",
+                "title": "NetFluss FAQ",
                 "path": "help-center/faq/getting-started"
               }
             ]
@@ -53,7 +53,7 @@
             "expandable": false,
             "pages": [
               {
-                "title": "Netfluss Troubleshooting",
+                "title": "NetFluss Troubleshooting",
                 "path": "help-center/troubleshooting/install-error"
               }
             ]

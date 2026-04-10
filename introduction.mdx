@@ -1,29 +1,29 @@
 ---
-title: Netfluss overview
-description: Monitor real-time upload and download rates from your macOS menu bar with Netfluss, including top apps by bandwidth and DNS, IP, and external connection details.
+title: NetFluss overview
+description: Monitor real-time upload and download rates from your macOS menu bar with NetFluss, including top apps by bandwidth and DNS, IP, and external connection details.
 ---
 
 ## App overview
 
-Netfluss runs in your macOS menu bar and shows real-time upload and download rates across all active network adapters, plus the apps using the most bandwidth.
+NetFluss runs in your macOS menu bar and shows real-time upload and download rates across all active network adapters, plus the apps using the most bandwidth.
 
 Use it to keep an eye on background data usage, confirm that large downloads or uploads are running, and quickly spot unusual network activity without leaving your desktop.
 
-<Image src="https://raw.githubusercontent.com/rana-gmbh/netfluss/main/screenshot.png" width="790" height="1084" alt="Netfluss screenshot showing live upload and download rates and top apps using bandwidth in the macOS menu bar" />
+<Image src="https://raw.githubusercontent.com/rana-gmbh/netfluss/main/screenshot.png" width="790" height="1084" alt="NetFluss screenshot showing live upload and download rates and top apps using bandwidth in the macOS menu bar" />
 
 <Callout kind="info" collapsed="false">
-  Netfluss supports macOS 13 Ventura or later. The app is notarized and signed with a Developer ID, so macOS Gatekeeper recognizes it as trusted software.
+  NetFluss supports macOS 13 Ventura or later. The app is notarized and signed with a Developer ID, so macOS Gatekeeper recognizes it as trusted software.
 </Callout>
 
-## What Netfluss shows
+## What NetFluss shows
 
-Netfluss focuses on low-friction, always-available network visibility in the menu bar:
+NetFluss focuses on low-friction, always-available network visibility in the menu bar:
 
 - **Live upload and download rates** for your active network adapters, updated in real time.
 
 - **Per-app bandwidth usage**, so you can see which processes consume the most data.
 
-- **Bandwidth Statistics window**, with 1H, 24H, 7D, 30D, and 1Y ranges, separate upload and download timelines, plus top adapters and top apps over time; Netfluss only starts collecting these statistics when you enable them, and statistics collection stays off by default.
+- **Bandwidth Statistics window**, with 1H, 24H, 7D, 30D, and 1Y ranges, separate upload and download timelines, plus top adapters and top apps over time; NetFluss only starts collecting these statistics when you enable them, and statistics collection stays off by default.
 
 - **Built-in Speed Test**, launched from the menu bar icon context menu, using M-Lab and Cloudflare test providers, with a dedicated Speed Test window and local Speed Test History so you can compare results over time.
 
@@ -41,37 +41,37 @@ Netfluss focuses on low-friction, always-available network visibility in the men
 
 - **Reliable External IP display**, backed by ipwho.is with api.ipify.org as a fallback to keep your external address and country flag accurate.
 
-- **IPv4/IPv6 preference for External IP**, letting you choose whether Netfluss shows your external IPv4 or IPv6 address in Preferences → Appearance → External IP.
+- **IPv4/IPv6 preference for External IP**, letting you choose whether NetFluss shows your external IPv4 or IPv6 address in Preferences → Appearance → External IP.
 
-- **Fritz!Box Bandwidth Monitoring (experimental)**, which reads total WAN upload and download rates from your Fritz!Box router via the official TR-064 API (no authentication for bandwidth data) and shows them in the Netfluss popover with progress bars relative to your line speed; enable this in Preferences → Fritz!Box Bandwidth and, if needed, change the router address (default: `fritz.box`).
+- **Fritz!Box Bandwidth Monitoring (experimental)**, which reads total WAN upload and download rates from your Fritz!Box router via the official TR-064 API (no authentication for bandwidth data) and shows them in the NetFluss popover with progress bars relative to your line speed; enable this in Preferences → Fritz!Box Bandwidth and, if needed, change the router address (default: `fritz.box`).
 
-- **UniFi and OpenWrt monitoring**, which connects to your local UniFi controller or OpenWrt router with authentication to read WAN bandwidth metrics and show them alongside your Mac traffic in the Netfluss popover; Netfluss stores the required credentials securely in your Apple Keychain.
+- **UniFi and OpenWrt monitoring**, which connects to your local UniFi controller or OpenWrt router with authentication to read WAN bandwidth metrics and show them alongside your Mac traffic in the NetFluss popover; NetFluss stores the required credentials securely in your Apple Keychain.
 
-- **At-a-glance status** without opening Activity Monitor or a full network tool, with quick access to Bandwidth Statistics and Speed Test from the right-click context menu on the Netfluss menu bar icon.
+- **At-a-glance status** without opening Activity Monitor or a full network tool, with quick access to Bandwidth Statistics and Speed Test from the right-click context menu on the NetFluss menu bar icon.
 
 <Callout kind="info">
-  Netfluss keeps UniFi and OpenWrt credentials only in your local Apple Keychain and uses them solely to communicate with your local controller or router.
+  NetFluss keeps UniFi and OpenWrt credentials only in your local Apple Keychain and uses them solely to communicate with your local controller or router.
 </Callout>
 
 You control when to open the detailed view from the menu bar, keeping your desktop uncluttered while still having network insights a click away.
 
 ## Getting started
 
-Install Netfluss either by downloading the latest GitHub release or by using the Homebrew cask. Both options install the same signed and notarized app.
+Install NetFluss either by downloading the latest GitHub release or by using the Homebrew cask. Both options install the same signed and notarized app.
 
 <Tabs>
   <Tab title="GitHub release" icon="download">
     <Steps>
       <Step title="Download the latest release" icon="download" title-type="p">
-        Go to the Netfluss GitHub Releases page and download the latest `Netfluss-<version>.zip` archive.
+        Go to the NetFluss GitHub Releases page and download the latest `NetFluss-<version>.zip` archive.
       </Step>
 
       <Step title="Unzip and move the app" icon="folder" title-type="p">
-        Unzip the downloaded file, then drag `Netfluss.app` into your `/Applications` folder so it is available for all users on your Mac.
+        Unzip the downloaded file, then drag `NetFluss.app` into your `/Applications` folder so it is available for all users on your Mac.
       </Step>
 
-      <Step title="Open Netfluss" icon="play-circle" title-type="p">
-        Launch `Netfluss.app` from `/Applications`. After it starts, look for the Netfluss icon in your menu bar to confirm it is running.
+      <Step title="Open NetFluss" icon="play-circle" title-type="p">
+        Launch `NetFluss.app` from `/Applications`. After it starts, look for the NetFluss icon in your menu bar to confirm it is running.
       </Step>
     </Steps>
   </Tab>
@@ -79,17 +79,17 @@ Install Netfluss either by downloading the latest GitHub release or by using the
   <Tab title="Homebrew" icon="terminal">
     <Steps>
       <Step title="Install via Homebrew cask" icon="terminal" title-type="p">
-        Run the following command in Terminal to install Netfluss:
+        Run the following command in Terminal to install NetFluss:
 
         ```bash
         brew install --cask rana-gmbh/netfluss/netfluss
         ```
 
-        Homebrew downloads the latest release and places `Netfluss.app` into your `/Applications` folder.
+        Homebrew downloads the latest release and places `NetFluss.app` into your `/Applications` folder.
       </Step>
 
       <Step title="Start the app" icon="play-circle" title-type="p">
-        Open `Netfluss.app` from `/Applications` or search for "Netfluss" with Spotlight. After launch, confirm the Netfluss icon appears in your menu bar and shows live network rates.
+        Open `NetFluss.app` from `/Applications` or search for "NetFluss" with Spotlight. After launch, confirm the NetFluss icon appears in your menu bar and shows live network rates.
       </Step>
     </Steps>
   </Tab>
@@ -99,7 +99,7 @@ Install Netfluss either by downloading the latest GitHub release or by using the
 
 <Columns cols={3}>
   <Card title="GitHub repository" href="https://github.com/rana-gmbh/netfluss" icon="github" horizontal="false">
-    Browse the source code, file issues, and contribute to Netfluss on GitHub.
+    Browse the source code, file issues, and contribute to NetFluss on GitHub.
   </Card>
 
   <Card title="Latest releases" href="https://github.com/rana-gmbh/netfluss/releases/latest" icon="download" horizontal="false">
@@ -107,6 +107,6 @@ Install Netfluss either by downloading the latest GitHub release or by using the
   </Card>
 
   <Card title="Changelog" href="/changelog" icon="history" horizontal="false">
-    See detailed release notes and version history for Netfluss.
+    See detailed release notes and version history for NetFluss.
   </Card>
 </Columns>
