@@ -19,6 +19,64 @@ When you click the menu bar item, Netfluss also shows:
 
 </Expandable>
 
+<Expandable title="What is Bandwidth Statistics in Netfluss 2.0?">
+
+Bandwidth Statistics is a dedicated window that shows historical bandwidth usage over time, instead of only the live rates in the menu bar popover.
+
+The window includes:
+
+- Time ranges for `1H`, `24H`, `7D`, `30D`, and `1Y`
+- Separate download and upload timelines
+- Top adapters and top apps for the selected range
+
+Statistics collection is optional and off by default. You can keep Netfluss running without collecting any statistics, or enable statistics and separately control whether app-level statistics are collected.
+
+To open the Bandwidth Statistics window, right-click the Netfluss menu bar icon and choose `Bandwidth Statistics`.
+
+</Expandable>
+
+<Expandable title="How does the built-in Speed Test work and where is the history stored?">
+
+The built-in Speed Test lets you measure your internet connection directly from Netfluss without opening a browser or separate app.
+
+From the Netfluss menu bar icon, right-click and choose `Run Speed Test…` to open the dedicated Speed Test window. Netfluss runs the test using either the M-Lab or Cloudflare provider, and it remembers your last selected provider for the next run.
+
+Each completed speed test is saved locally in Speed Test History. You can compare results by date, provider, download speed, upload speed, and latency to see how your connection performs over time.
+
+</Expandable>
+
+<Expandable title="Does Netfluss check for updates automatically?">
+
+Netfluss supports optional automatic update checks against GitHub so you do not have to manually look up new releases.
+
+Go to Preferences → Update and enable `Check GitHub for updates automatically` to let Netfluss check once per day whether a newer version is available. Automatic checks only read release information from GitHub; they do not install updates without your action.
+
+If you prefer manual control, leave the automatic toggle off and use the existing manual update check in the About window whenever you want to see if a new version is available.
+
+</Expandable>
+
+<Expandable title="What are the new menu bar styles and color controls in Netfluss 1.12?">
+
+Netfluss 1.12 adds more control over how the menu bar display looks, so you can match it to your macOS setup and personal preference.
+
+You can choose between these menu bar icon styles:
+
+- Standard
+- Unified pill
+- Dashboard
+- Icon
+
+In addition to the layout styles, Netfluss 1.12 introduces separate color controls for:
+
+- Upload arrow
+- Download arrow
+- Upload number
+- Download number
+
+Use these options to tune both the shape and coloring of the menu bar item without affecting other parts of the UI.
+
+</Expandable>
+
 <Expandable title="What is Fritz!Box Bandwidth Monitoring (Experimental)?">
 
 Fritz!Box Bandwidth Monitoring shows total WAN download and upload rates from your Fritz!Box router directly in the Netfluss popover, alongside your Mac's own adapter traffic.

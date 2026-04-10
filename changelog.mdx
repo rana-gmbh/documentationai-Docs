@@ -9,6 +9,45 @@ description: Release notes for Netfluss.
 Track Netfluss updates, new features, and bug fixes across all released versions.
 </Callout>
 
+<Update label="2026-04-10" description="NetFluss 2.0" tags={["feature", "ui", "improvement"]}>
+## What's new
+
+- Added a dedicated **Bandwidth Statistics** window with `1H`, `24H`, `7D`, `30D`, and `1Y` ranges so you can review short- and long-term bandwidth trends.
+- Visualized download and upload timelines alongside **top adapters** and **top apps**, giving you a high-level and per-source view in one place.
+- Kept statistics collection **optional and off by default**, with a separate app-statistics toggle for users who want deeper historical analysis.
+- Introduced a built-in **Speed Test** you can launch from the menu bar icon context menu, using integrated M-Lab and Cloudflare providers.
+- Showed detailed speed test results for download, upload, latency, and server information in a dedicated Speed Test window that remembers your last selected provider.
+- Saved each completed speed test locally into a **Speed Test History** so you can compare results over time by date, provider, download, upload, and latency.
+
+## Other highlights
+
+- Updated the app icon and added a matching menu bar icon option, with design credit to GitHub user `JohnnyFireOne`.
+- Improved popup positioning so the NetFluss popover stays aware of screen edges and remains fully visible near screen borders.
+- Refined total bandwidth handling for VPN and tunnel adapters so combined traffic summaries better reflect your actual routing setup.
+- Expanded the right-click menu with entries for `Bandwidth Statistics`, `Run Speed Test…`, `Try FileFluss`, and project support links for quicker access to these actions.
+</Update>
+
+<Update label="2026-04-01" description="NetFluss 1.12" tags={["feature", "improvement"]}>
+## What's new
+
+- Added new menu bar icon styles: **Standard**, **Unified pill**, **Dashboard**, and **Icon**, so you can match NetFluss to your preferred menu bar look.
+- Introduced separate color controls for the upload arrow, download arrow, upload number, and download number for more granular visual customization.
+- Expanded icon choices in **Icon** mode and refined menu bar layout and spacing options to keep the status item clean and readable.
+- Renamed the app branding to **NetFluss** across the app bundle, release assets, and README to align the product name consistently.
+
+## Improvements
+
+- Greatly reduced CPU usage and energy impact in real-world usage, especially after opening and closing the popover.
+- Reworked menu bar rendering, popup lifecycle handling, and background sampling so hidden UI and popup-only work do not stay active unnecessarily.
+- Stabilized Preferences and About window teardown to avoid UI-related crashes while preserving the lighter runtime behavior.
+
+## Update checker
+
+- Added an optional automatic GitHub update checker that runs once per day to notify you about new releases.
+- Kept the original manual update check in the About window so you stay in control of when to look for updates.
+- Linked update notifications directly to the latest GitHub release page for a clear path to download details and new builds.
+</Update>
+
 <Update label="2026-03-27" description="Netfluss 1.11" tags={["feature", "improvement"]}>
 ## What's new
 
