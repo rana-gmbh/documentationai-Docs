@@ -8,6 +8,303 @@ description: Release notes for NetFluss.
   Track NetFluss updates, new features, and bug fixes across all released versions.
 </Callout>
 
+<Update label="2026-06-26" description="NetFluss 2.4" tags={["feature","improvement"]}>
+  ## What's new
+
+  - Added a built-in **VPN client** supporting OpenVPN, WireGuard, and IKEv2/IPsec/L2TP protocols, so you can connect without installing provider-specific VPN software.
+  - Enabled **profile import** from single `.ovpn` or `.conf` files, folders of configs, or `.zip` bundles (e.g. a provider's router-profile pack); each config becomes a separately selectable server endpoint.
+  - Added **VPN controls in the popover** including a profile picker, server picker, status display, connect/disconnect button, exit-node country with flag, and the assigned tunnel IP address.
+  - Supported **per-VPN DNS presets** that apply one of your existing DNS presets while connected and restore the previous DNS automatically on disconnect.
+  - Added **auto-reconnect with exponential backoff** so a dropped tunnel is re-established automatically; a deliberate disconnect cancels the cycle.
+  - Added a **connect-on-launch** option so a chosen profile connects automatically when NetFluss starts; only one profile can have this enabled at a time.
+  - Provided full **profile management** in Preferences → VPN — import, rename, reorder, and delete profiles; credentials are stored securely in the macOS Keychain.
+
+  ## Improvements
+
+  - Reworked background sampling to **much lower energy use** by replacing the heavyweight `nettop` binary with lightweight `netstat` snapshots, returning energy impact to normal menu-bar-app levels.
+  - Improved **download bandwidth accuracy on macOS 26.5** where the primary adapter's inbound byte counter can be frozen, now measured correctly without extra CPU cost.
+  - Added a new **"System default" menu bar color** option that follows the menu bar appearance automatically, staying legible whether the wallpaper is light or dark (credits @mvanhorn).
+</Update>
+
+<Update label="2026-05-22" description="NetFluss 2.3" tags={["feature","improvement","bugfix"]}>
+  ## What's new
+
+  - Added a **Wi-Fi manager in the popover** so you can switch Wi-Fi networks directly from the menu bar without opening System Settings.
+  - Supported **pinning SSIDs** to the top of the list; pinned networks that go out of range stay visible with a "Not available" label and re-trigger a targeted scan when tapped.
+  - Saved **Wi-Fi passwords to the macOS Keychain via the privileged helper** so joined networks are written into macOS's Known Networks list and reused by the system Wi-Fi menu even when NetFluss isn't running.
+  - Showed **per-row details** for each network (band, channel, RSSI, security type, BSSID) via an (i) button, and added an optional "only show the strongest N" cap to keep the list short in crowded environments.
+  - Introduced **reorderable and toggleable popover sections** in Preferences → Appearance, letting you drag the seven segments (Download/Upload, Network adapters, Network flow, DNS, Router, Wi-Fi Networks, Top Apps) into any order and toggle visibility per section.
+  - Added a new **Wi-Fi preferences pane** with the Wi-Fi switcher toggle, strongest-N cap, and Location Services explanation.
+  - Added **system-access shortcuts** in Preferences → General with one-click buttons to Grant Location Access and Install Privileged Helper.
+
+  ## Improvements
+
+  - Added a hidden **"Copy Network Diagnostics…"** action behind Option + right-click of the menu bar icon for debugging.
+  - Added a **15-second defensive timeout** on every privileged-helper XPC call so the DNS switcher and Wi-Fi credential saves can no longer hang the popover.
+  - Localised all new UI strings (and a handful of pre-existing ones) into German, Simplified Chinese, and Traditional Chinese.
+
+  ## Bug fixes
+
+  - Fixed the **macOS 26.5 frozen&#x20;****`ifi_ibytes`****&#x20;download counter** on managed-profile Macs by substituting a per-process inbound rate from `nettop`, so the menu-bar download number and Bandwidth Statistics history record correctly.
+</Update>
+
+<Update label="2026-04-21" description="NetFluss 2.2" tags={["feature","ui","improvement"]}>
+  ## What's new
+
+  - Redesigned **Preferences into clear panes** — General, Adapters, Statistics, Appearance, Top Apps, DNS, and Router — replacing the single scrolling list so settings are easier to find.
+  - Added **language support** for English, German, Simplified Chinese, and Traditional Chinese; follows the macOS system language by default and can be changed manually in Preferences → General.
+  - Added **OPNsense router bandwidth support**, grouped with Fritz!Box, UniFi, and OpenWRT in the new Router pane.
+  - Added a **None option for IP display** so the popover can hide IP address information entirely.
+
+  ## Improvements
+
+  - Improved adapter statistics accounting to avoid inflated totals from invalid interface counter deltas.
+  - Cleaned up the custom date range controls in the bandwidth statistics window.
+
+  ## Other highlights
+
+  - Updated release packaging so **localization files are included in the signed app bundle** (credits @oezkanyilmaz).
+</Update>
+
+<Update label="2026-04-13" description="NetFluss 2.1" tags={["feature","improvement","bugfix"]}>
+  ## What's new
+
+  - Switched **DNS changes to a bundled privileged helper** that uses a one-time macOS approval flow, after which DNS switching and Ethernet resets no longer need repeated password prompts.
+  - Based **active network service detection on the real macOS service mapping**, fixing unreliable switching when the service name differs from the hardware port.
+  - Expanded **custom DNS presets to support up to four DNS servers**.
+  - Added a **pin button** that turns the menu bar popup into a movable floating window so NetFluss can stay open like a live widget.
+  - Made **Top Apps update live** while the popup or pinned window is open.
+
+  ## Improvements
+
+  - Made **OpenWRT support more robust** with HTTPS-first probing, self-signed certificate handling, better ubus error reporting, and WAN discovery fallback when `network.interface.wan` is not the active uplink.
+  - Made **Fritz!Box polling more resilient** to transient request failures, keeping the last good sample visible instead of dropping into an error state.
+  - Allowed **Speed Test History to be opened without starting a new test**.
+  - Added support for **notes on saved speed test results**.
+  - Made history timestamps more compact and locale-aware.
+  - Sped up popup Top Apps sampling for more responsive updates.
+
+  ## Bug fixes
+
+  - Fixed app history overcounting in the Top 10 lists.
+  - Improved Safari and WebKit traffic attribution in app statistics.
+  - Fixed adapter accounting for high-throughput local transfers such as SMB downloads from a NAS.
+</Update>
+
+<Update label="2026-04-10" description="NetFluss 2.0" tags={["feature","ui","improvement"]}>
+  ## What's new
+
+  - Added a dedicated **Bandwidth Statistics** window with `1H`, `24H`, `7D`, `30D`, and `1Y` ranges so you can review short- and long-term bandwidth trends.
+  - Visualized download and upload timelines alongside **top adapters** and **top apps**, giving you a high-level and per-source view in one place.
+  - Kept statistics collection **optional and off by default**, with a separate app-statistics toggle for users who want deeper historical analysis.
+  - Introduced a built-in **Speed Test** you can launch from the menu bar icon context menu, using integrated M-Lab and Cloudflare providers.
+  - Showed detailed speed test results for download, upload, latency, and server information in a dedicated Speed Test window that remembers your last selected provider.
+  - Saved each completed speed test locally into a **Speed Test History** so you can compare results over time by date, provider, download, upload, and latency.
+
+  ## Other highlights
+
+  - Updated the app icon and added a matching menu bar icon option, with design credit to GitHub user `JohnnyFireOne`.
+  - Improved popup positioning so the NetFluss popover stays aware of screen edges and remains fully visible near screen borders.
+  - Refined total bandwidth handling for VPN and tunnel adapters so combined traffic summaries better reflect your actual routing setup.
+  - Expanded the right-click menu with entries for `Bandwidth Statistics`, `Run Speed Test…`, `Try FileFluss`, and project support links for quicker access to these actions.
+</Update>
+
+<Update label="2026-04-01" description="NetFluss 1.12" tags={["feature","improvement"]}>
+  ## What's new
+
+  - Added new menu bar icon styles: **Standard**, **Unified pill**, **Dashboard**, and **Icon**, so you can match NetFluss to your preferred menu bar look.
+  - Introduced separate color controls for the upload arrow, download arrow, upload number, and download number for more granular visual customization.
+  - Expanded icon choices in **Icon** mode and refined menu bar layout and spacing options to keep the status item clean and readable.
+  - Renamed the app branding to **NetFluss** across the app bundle, release assets, and README to align the product name consistently.
+
+  ## Improvements
+
+  - Greatly reduced CPU usage and energy impact in real-world usage, especially after opening and closing the popover.
+  - Reworked menu bar rendering, popup lifecycle handling, and background sampling so hidden UI and popup-only work do not stay active unnecessarily.
+  - Stabilized Preferences and About window teardown to avoid UI-related crashes while preserving the lighter runtime behavior.
+
+  ## Update checker
+
+  - Added an optional automatic GitHub update checker that runs once per day to notify you about new releases.
+  - Kept the original manual update check in the About window so you stay in control of when to look for updates.
+  - Linked update notifications directly to the latest GitHub release page for a clear path to download details and new builds.
+</Update>
+
+<Update label="2026-03-27" description="NetFluss 1.11" tags={["feature","improvement"]}>
+  ## What's new
+
+  - Added experimental **UniFi Bandwidth Monitoring** that tracks WAN download and upload rates from UniFi gateways (UDM, USG, UXG).
+  - Authenticates UniFi routers via the UniFi OS REST API, storing credentials securely in the macOS Keychain and supporting both UniFi OS and legacy controller setups.
+  - Added experimental **OpenWrt Bandwidth Monitoring** that shows WAN download and upload rates from OpenWrt routers.
+  - Connected to OpenWrt using the ubus JSON-RPC API with automatic session management, keeping router credentials stored securely in the macOS Keychain.
+  - Improved Fritz!Box support so NetFluss auto-detects the Fritz!Box router address from the default gateway, reducing manual configuration.
+  - Expanded menu bar layout options with a pinned unit so you can lock the display to KB/s, MB/s, or GB/s (bits or bytes) instead of auto-scaling.
+  - Added menu bar decimal controls so you can choose 0, 1, 2, or 3 fixed decimal places or let NetFluss decide automatically.
+  - Included **Black** as a new color option for upload and download labels in the menu bar.
+  - Fixed arrow alignment for proportional system fonts (System and Rounded) so arrows line up cleanly next to bandwidth values.
+  - Made the popover scrollable and resizable so it works better on smaller screens and with many active adapters.
+
+  ## Improvements
+
+  - Reduced CPU and energy usage by caching expensive operations: interface info (\~30s), Wi‑Fi details (\~5s), netstat (\~3s), DNS checks (\~10s), and router polling (\~5s) instead of recalculating every tick.
+  - Reused shared system resources such as `SCDynamicStore` instead of recreating them each update, cutting overhead on every refresh.
+  - Cached PID-to-name lookups across netstat samples so NetFluss resolves process names less often while keeping Top Apps accurate.
+  - Cached the menu bar font and moved JSON decoding work out of the SwiftUI render path to keep UI updates lightweight.
+  - Reduced overall CPU wake-ups and background work to lower NetFluss energy impact on battery-powered Macs.
+</Update>
+
+<Update label="2026-03-19" description="NetFluss 1.10" tags={["feature","improvement"]}>
+  ## What's new
+
+  - Added experimental Fritz!Box Bandwidth Monitoring that shows total WAN download and upload rates from your Fritz!Box router directly in the NetFluss popover.
+  - Queried Fritz!Box bandwidth data via the official TR-064 API without requiring authentication for these metrics.
+  - Displayed bandwidth utilization with progress bars relative to your configured line speed, matching your DSL, cable, or fiber sync rates.
+  - Made the Fritz!Box router address configurable in Preferences → Fritz!Box Bandwidth, defaulting to `fritz.box` so you can adapt to custom network setups.
+  - Enabled editing of custom DNS presets after creation so you can update both the preset name and server addresses.
+  - Added a pencil icon next to each custom DNS preset in Preferences → DNS Switcher as the entry point for editing.
+
+  ## Improvements
+
+  - Reduced unnecessary UI refreshes triggered by Fritz!Box polling so the popover stays smoother and more efficient while bandwidth monitoring is active.
+  - Closed the popover automatically when you open Preferences to streamline the workflow and avoid overlapping windows.
+</Update>
+
+<Update label="2026-03-06" description="NetFluss 1.9.2" tags={["feature","bugfix","improvement"]}>
+  ## What's new
+
+  - Switched DNS changes and Ethernet reconnects to use Touch ID when available instead of the admin password dialog, falling back to a password prompt when Touch ID is unavailable.
+  - Added a Touch ID toggle for DNS-related actions in Preferences → DNS Switcher so you control whether NetFluss asks for Touch ID or always uses the password dialog.
+
+  ## Bug fixes
+
+  - Made the preferences window resizable so it fits better on smaller screens.
+  - Documented a macOS and SwiftUI limitation where the resize cursor may not appear at the window edges, while confirming that dragging the edges still resizes the window correctly.
+</Update>
+
+<Update label="2026-03-06" description="NetFluss 1.9.1" tags={["bugfix","improvement"]}>
+  ## What's new
+
+  - Ensured the External IP shows IPv4 by default so dual-stack connections no longer default to IPv6 in the menu bar.
+  - Reduced external API calls for country code lookup by performing lookups only while the Connection Flow View is active.
+  - Added an IPv4/IPv6 preference for External IP under Preferences → Appearance → External IP so you control which address family NetFluss displays.
+</Update>
+
+<Update label="2026-03-06" description="NetFluss 1.9" tags={["feature","improvement","bugfix"]}>
+  ## What's new
+
+  - Added a DNS Switcher so you switch DNS providers directly from the popover, with built-in presets for Cloudflare, Google, Quad9, and OpenDNS, plus support for custom presets.
+  - Made DNS changes a one-click action from the menu bar, prompting for your admin password when required, while keeping your chosen presets manageable from Preferences where you toggle them on or off and drag to reorder.
+  - Introduced App Filtering for Top Apps via Preferences → Top Apps → "Apps to Hide", listing all processes that used bandwidth in the last 60 seconds so you can hide noisy background items from the Top Apps view.
+  - Improved menu bar stability by using a fixed-width container so the status item no longer shifts as values change and the popover stays anchored in place.
+  - Fixed External IP display reliability by switching the lookup to ipwho.is with an api.ipify.org fallback so the external address appears consistently.
+</Update>
+
+<Update label="2026-03-01" description="NetFluss 1.8" tags={["feature","ui","improvement"]}>
+  ## What's new
+
+  - Added a Connection Flow View with an optional IP display that shows the path from your Mac through the router and any active VPN tunnel to the internet, including a country flag for VPN exit nodes. Switch between classic list and flow view in Preferences.
+  - Introduced an Adapter Grace Period (3, 5, or 10 seconds) so adapter cards stay visible briefly after going idle, reducing flicker. Configure the grace period in Preferences.
+  - Added a Top Apps Grace Period (3, 5, or 10 seconds) that keeps recently active apps in the list for a short time after traffic stops, making the list more stable. Adjust the duration in Preferences.
+  - Added a Wi‑Fi detail popover accessible from the info button on the Wi‑Fi adapter card, showing Wi‑Fi standard, security, channel and width, RSSI, noise, SNR, ESSID and BSSID with copy support, and transmit rate.
+  - Linked a Buy Me a Coffee support option from the About window to make it easier to support ongoing NetFluss development.
+</Update>
+
+<Update label="2026-02-28" description="NetFluss 1.7.1" tags={["bugfix","compatibility"]}>
+  ## What's new
+
+  - Restored Top Apps functionality on macOS 15 so per-application bandwidth usage appears correctly.
+</Update>
+
+<Update label="2026-02-25" description="NetFluss 1.7" tags={["feature","improvement"]}>
+  ## What's new
+
+  - Added a launch-at-login toggle so NetFluss starts automatically with macOS when enabled.
+  - Made the adapter list in the popover scrollable to handle many network interfaces.
+  - Introduced a bandwidth exclude option to ignore selected adapters from total traffic.
+  - Updated the app icon for a refreshed appearance in the Dock and menu bar.
+  - Bumped version information in the About window and documentation to reflect this release.
+</Update>
+
+<Update label="2026-02-24" description="NetFluss 1.6.1" tags={["bugfix","stability"]}>
+  ## What's new
+
+  - Fixed a crash affecting Intel Macs on macOS 13 during startup.
+  - Deferred creation of the status bar controller until after `applicationDidFinishLaunching` using an application delegate adaptor.
+  - Improved status bar initialization timing to make launch behavior more reliable across hardware and OS versions.
+</Update>
+
+<Update label="2026-02-24" description="NetFluss 1.6" tags={["feature","improvement"]}>
+  ## What's new
+
+  - Enabled custom names for network adapters so you can label interfaces in a way that matches your setup.
+  - Added drag-to-reorder for adapters, letting you control the order in which they appear in the popover.
+  - Introduced a menu bar icon-only mode to show traffic without a text label in the status bar.
+  - Included GPL license headers and a license notice to clarify open source licensing.
+  - Updated the release workflow to ship a universal binary that supports both Apple Silicon and Intel Macs.
+  - Refreshed the README and related documentation to cover new features and packaging changes.
+</Update>
+
+<Update label="2026-02-24" description="NetFluss 1.5" tags={["bugfix","improvement"]}>
+  ## What's new
+
+  - Resolved a popover freeze that occurred after closing the About window, restoring normal interaction.
+  - Adjusted the About window behavior for more consistent presentation and dismissal.
+  - Tuned the update checker to integrate better with the About flow and overall app lifecycle.
+</Update>
+
+<Update label="2026-02-23" description="NetFluss 1.4" tags={["feature","ui"]}>
+  ## What's new
+
+  - Added a theme picker with System, Dracula, Nord, and Solarized options to customize the look of NetFluss.
+  - Hid upload and download color pickers when using non-system themes to keep settings relevant and clear.
+  - Introduced menu bar font size and style controls so you can tune readability and space usage.
+  - Updated status item length measurement to run on every update, improving truncation and layout behavior.
+</Update>
+
+<Update label="2026-02-20" description="NetFluss 1.3" tags={["feature","stability"]}>
+  ## What's new
+
+  - Added a reconnect button for adapters so you can manually reattach when an interface loses connection.
+  - Reworked Top Apps sampling to avoid a pipe buffer deadlock, improving reliability under load.
+  - Stabilized the Top Apps layout for more consistent alignment and spacing.
+  - Reduced the visible Top Apps limit to focus on the most relevant processes and keep the view compact.
+</Update>
+
+<Update label="2026-02-19" description="NetFluss 1.2" tags={["feature","ui"]}>
+  ## What's new
+
+  - Refactored the main interface with a major UI update to make sections clearer and easier to scan.
+  - Introduced a total rates header that shows combined upload and download throughput across adapters.
+  - Redesigned adapter views as cards with clearer grouping and per-interface details.
+  - Added an IP section with copy support, making it faster to share or reuse address information.
+  - Improved the Top Apps section with better structure and presentation of per-app traffic.
+  - Added color pickers for key metrics to let you align NetFluss with your preferred color scheme.
+</Update>
+
+<Update label="2026-02-07" description="NetFluss 1.1" tags={["feature"]}>
+  ## What's new
+
+  - Introduced the first version of Top Apps, showing which applications are using the most bandwidth.
+  - Based Top Apps on system `nettop` data to surface per-process network usage.
+  - Added a preferences toggle so you can enable or disable Top Apps depending on your needs and privacy preferences.
+</Update>
+
+<Update label="2026-02-05" description="NetFluss 1.0" tags={["initial-release"]}>
+  ## What's new
+
+  - Shipped the initial NetFluss release for monitoring network traffic from the macOS menu bar.
+  - Displayed real-time upload and download rates for active network adapters.
+  - Provided a popover view with per-adapter details for a quick overview of current network activity.
+</Update>
+
+
+
+## NetFluss releases
+
+<Callout kind="info" collapsed="false">
+  Track NetFluss updates, new features, and bug fixes across all released versions.
+</Callout>
+
 <Update label="2026-04-10" description="NetFluss 2.0" tags={["feature","ui","improvement"]}>
   ## What's new
 
