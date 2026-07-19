@@ -1,6 +1,9 @@
 ---
 title: Fix install and runtime issues
-description: Diagnose and fix common NetFluss problems including install errors, jumping menu bar layouts, external IP issues, cluttered Top Apps, adapter behavior, Fritz!Box bandwidth, and stuck popover buttons.
+description: >-
+  Diagnose and fix common NetFluss problems including VPN connection errors,
+  high CPU from nettop, frozen download rates, DNS switch failures, menu bar
+  display issues, install errors, and router monitoring problems.
 ---
 
 ## App will not open or shows a Gatekeeper or damaged app warning
@@ -407,3 +410,394 @@ This bug was fixed in version 1.5 by changing window activation behavior. If you
 </Steps>
 
 If the popover still ignores clicks after updating, restart macOS and test again. If the issue persists, include your NetFluss version and macOS version when you contact support.
+
+---
+
+## VPN: "Bad CPU type in executable" on older Intel Macs
+
+If you see `The operation couldn't be completed. Bad CPU type in executable` when trying to connect a WireGuard VPN profile, this typically occurs on older Intel-based Macs, particularly those running macOS via OpenCore Legacy Patcher (OCLP).
+
+<Callout kind="alert">
+
+This issue is currently open and under investigation. The NetFluss helper binary may not include a full x86_64 slice for all older Mac architectures.
+
+</Callout>
+
+<Steps>
+  <Step title="Check your Mac architecture" icon="cpu" titleType="p">
+
+    - Open **About This Mac** and confirm whether your Mac uses Apple Silicon or an Intel processor.
+    - If you are on an older Intel Mac (especially pre-2017 models), this error is a known compatibility issue.
+
+  </Step>
+
+  <Step title="Try OpenVPN or IKEv2 instead" icon="shuffle" titleType="p">
+
+    - If your VPN provider offers OpenVPN or IKEv2/IPsec profiles, try importing and connecting with one of those protocols instead of WireGuard.
+    - IKEv2 uses the native macOS VPN stack and does not rely on bundled helper binaries.
+
+  </Step>
+
+  <Step title="Report your setup on GitHub" icon="github" titleType="p">
+
+    - Open an issue on the NetFluss GitHub repository with your Mac model, macOS version, and whether you are using OCLP.
+    - Reference issue #48 so the maintainer can track the compatibility fix.
+
+  </Step>
+</Steps>
+
+---
+
+## VPN: OpenVPN "Could not reach the management interface"
+
+If you see `Could not reach the OpenVPN management interface` when connecting an OpenVPN profile, the most common cause is that the `openvpn` command-line tool is not installed or not accessible on your system.
+
+<Callout kind="info">
+
+NetFluss bundles a signed `openvpn` binary, but if you installed NetFluss via Homebrew, the helper may not be in the expected path. Ensure you are running the latest NetFluss version.
+
+</Callout>
+
+<Steps>
+  <Step title="Update NetFluss to the latest version" icon="download" titleType="p">
+
+    - Quit NetFluss if it is running.
+    - Download the latest release from the GitHub releases page and move it to `/Applications`.
+    - Relaunch NetFluss and try connecting your OpenVPN profile again.
+
+  </Step>
+
+  <Step title="Verify the profile is valid" icon="file-check" titleType="p">
+
+    - Open your `.ovpn` file in a text editor and confirm it contains valid server and certificate directives.
+    - If the profile uses a provider-patched directive such as `scramble` or XOR obfuscation, NetFluss cannot run it with the bundled upstream `openvpn`.
+
+  </Step>
+
+  <Step title="Check for leftover OpenVPN processes" icon="terminal" titleType="p">
+
+    - Open Terminal and run `pgrep -l openvpn` to check for stale processes.
+    - If you see any, kill them with `kill <PID>` and retry the connection from NetFluss.
+
+  </Step>
+</Steps>
+
+If the error persists after updating and verifying the profile, open an issue on GitHub with your NetFluss version, macOS version, and the `.ovpn` file (with sensitive values redacted).
+
+---
+
+## VPN: WireGuard shows "connection stopped" but the tunnel is still active
+
+In some cases, NetFluss reports `The VPN connection stopped` and marks a WireGuard profile as disconnected, even though the tunnel is still working — `wireguard-go` is running, the `utun` interface is up, and traffic flows normally.
+
+<Callout kind="alert">
+
+This is a known issue (#50) caused by a name mismatch between the internal handle NetFluss creates and the actual interface name that `wg-quick` assigns. The VPN tunnel itself continues to work — only the NetFluss status display is incorrect.
+
+</Callout>
+
+<Steps>
+  <Step title="Verify the tunnel is actually working" icon="check-circle" titleType="p">
+
+    - Open a browser and load a website to confirm internet access works through the tunnel.
+    - Run `ifconfig | grep utun` in Terminal to check that the WireGuard interface is still up.
+
+  </Step>
+</Steps>
+
+<Callout kind="info">
+
+The tunnel remains active and secure despite the incorrect status display. Reconnecting from NetFluss may spawn additional `wireguard-go` processes and leave temporary config files in `/private/tmp/`. If you reconnect multiple times, check for orphaned processes using `pgrep -l wireguard` and clean up stale files in `/private/tmp/` that start with `nf`.
+
+</Callout>
+
+If you encounter this issue, report it on GitHub with reference to issue #50, including your NetFluss version and macOS version.
+
+---
+
+## High CPU usage from the nettop process
+
+On some Macs, the `nettop` subprocess used by NetFluss can intermittently cause high CPU usage, which increases energy impact and power consumption.
+
+<Callout kind="info">
+
+This issue (#45) has been reported on Apple Silicon Macs running recent macOS versions. NetFluss 2.3 replaced continuous `nettop` usage with a kernel-statistics client that runs at approximately 0% CPU, but `nettop` may still be used for Top Apps when the popover is open or as a fallback.
+
+</Callout>
+
+<Steps>
+  <Step title="Restart NetFluss" icon="refresh-cw" titleType="p">
+
+    - Quit NetFluss from the menu bar or Activity Monitor.
+    - Relaunch NetFluss from `/Applications`.
+    - The high CPU spike from `nettop` should disappear after restarting.
+
+  </Step>
+
+  <Step title="Update to NetFluss 2.3 or later" icon="download" titleType="p">
+
+    - NetFluss 2.3 introduced a kernel-statistics client that replaces continuous `nettop` for most operations.
+    - Download the latest version from the GitHub releases page and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Reduce popover frequency" icon="settings" titleType="p">
+
+    - If the issue recurs, especially after your Mac wakes from sleep, try increasing the refresh interval in **Preferences → General → Update**.
+    - The `nettop` spike is most noticeable when the popover is open and Top Apps is active.
+
+  </Step>
+</Steps>
+
+If high CPU persists after updating to 2.3 or later, use the hidden **Copy Network Diagnostics** action (hold Option and right-click the NetFluss menu bar icon) to capture 30 seconds of diagnostic data, and share it on GitHub referencing issue #45.
+
+---
+
+## Download rate stuck at 0.00 B/s
+
+If the download rate always shows `0.00 B/s` while the upload rate works correctly, this is a known issue on some macOS configurations where the kernel `ifi_ibytes` counter is frozen on the active Wi-Fi or Ethernet adapter.
+
+<Callout kind="info">
+
+This has been reported in managed/MDM profiles (issue #31) and with NAS file transfers over SMB (issue #30). NetFluss 2.3 includes a fallback that detects the broken adapter and substitutes a per-process inbound rate.
+
+</Callout>
+
+<Steps>
+  <Step title="Update to NetFluss 2.3 or later" icon="download" titleType="p">
+
+    - NetFluss 2.3 detects frozen adapter counters and falls back to a kernel-statistics client to calculate the download rate.
+    - Download the latest version from the GitHub releases page and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Check if the fallback is active" icon="activity" titleType="p">
+
+    - After updating, monitor the download rate while downloading a file.
+    - If the rate now shows correctly, the fallback mechanism is working.
+    - If it still shows `0.00`, try quitting and relaunching NetFluss.
+
+  </Step>
+
+  <Step title="Run Network Diagnostics" icon="terminal" titleType="p">
+
+    - Hold **Option** and right-click the NetFluss menu bar icon.
+    - Choose **Copy Network Diagnostics…** to capture 30 seconds of per-interface byte counters to your clipboard.
+    - Paste the output into a GitHub issue referencing #30 or #31, along with your macOS version and whether you use a managed profile.
+
+  </Step>
+</Steps>
+
+---
+
+## DNS switch fails: "active network service could not be identified"
+
+If the DNS Switcher shows `active network service could not be identified` when you try to switch DNS providers, this is a known issue that was reported on Wi-Fi connections (issue #36).
+
+<Callout kind="info">
+
+This was fixed in a NetFluss update. The fix applies DNS changes to all enabled network services, not just the primary one.
+
+</Callout>
+
+<Steps>
+  <Step title="Update to the latest NetFluss version" icon="download" titleType="p">
+
+    - Quit NetFluss and download the latest release from GitHub.
+    - Move the new `NetFluss.app` to `/Applications` and relaunch.
+    - Try switching DNS again from the popover.
+
+  </Step>
+
+  <Step title="Check the privileged helper is installed" icon="shield" titleType="p">
+
+    - Go to **Preferences → General → System access**.
+    - Click **Install Privileged Helper…** and confirm the status shows as enabled.
+    - If the helper fails to install, restart your Mac and try again.
+
+  </Step>
+
+  <Step title="Use networksetup as a temporary workaround" icon="terminal" titleType="p">
+
+    - If the issue persists, you can switch DNS manually in Terminal:
+
+    ```bash
+    sudo networksetup -setdnsservers Wi-Fi 1.1.1.1 1.0.0.1
+    ```
+
+    - Replace `Wi-Fi` with your active network service name and the IP addresses with your preferred DNS servers.
+
+  </Step>
+</Steps>
+
+---
+
+## Menu bar font size has no effect in the default style
+
+If changing the font size in Preferences only adds or removes empty space behind the text but the actual font size does not change, this is a known bug in NetFluss 2.2 (issue #40).
+
+<Callout kind="info">
+
+This only affects the default (Standard) menu bar style. The Pill and Dashboard styles apply font size changes correctly.
+
+</Callout>
+
+<Steps>
+  <Step title="Update to NetFluss 2.2.1 or later" icon="download" titleType="p">
+
+    - The font size rendering bug was fixed shortly after the 2.2 release.
+    - Download the latest version from GitHub and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Switch to a different style as a workaround" icon="palette" titleType="p">
+
+    - If you cannot update immediately, go to **Preferences → Appearance** and switch to the Pill or Dashboard style.
+    - Font size changes apply correctly in these styles.
+
+  </Step>
+</Steps>
+
+---
+
+## Stats are cut off on external displays
+
+If the NetFluss menu bar stats display correctly on your Mac's built-in screen but are cropped at the top on external displays, this is a known issue (issue #38) related to macOS display handling.
+
+<Steps>
+  <Step title="Update to the latest NetFluss version" icon="download" titleType="p">
+
+    - This issue was fixed in a NetFluss update released after the initial report.
+    - Download the latest version from GitHub and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Check display scaling settings" icon="monitor" titleType="p">
+
+    - Open **System Settings → Displays** and select the affected external display.
+    - Try a different scaling option to see if the cropping changes.
+    - If the issue persists after updating, report your display model and resolution on GitHub.
+
+  </Step>
+</Steps>
+
+---
+
+## Menu bar text colour does not adapt to light/dark appearance
+
+If your menu bar text becomes unreadable when switching between light and dark wallpapers, NetFluss previously required you to manually set the text and arrow colours for each appearance.
+
+<Callout kind="info">
+
+NetFluss 2.4 introduced a "System default" colour option that uses `NSColor.labelColor` to automatically adapt to the menu bar appearance. This was contributed via PR #47.
+
+</Callout>
+
+<Steps>
+  <Step title="Update to NetFluss 2.4 or later" icon="download" titleType="p">
+
+    - Download the latest version from GitHub and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Select System default colour" icon="palette" titleType="p">
+
+    - Go to **Preferences → Appearance**.
+    - Set the upload arrow, download arrow, upload number, and download number colours to **System default**.
+    - The colours now adapt automatically when you switch between light and dark menu bar appearances.
+
+  </Step>
+</Steps>
+
+---
+
+## Fritz!Box returns HTTP 500 when OPNsense is the gateway
+
+If your Fritz!Box bandwidth monitoring fails with an HTTP 500 error, this can happen when an OPNsense firewall is your primary router/gateway and the Fritz!Box is only used as a modem or management device (issue #33).
+
+<Callout kind="info">
+
+In this topology, the Fritz!Box TR-064 API may return errors because it is not the primary routing device. NetFluss 2.1 added native OPNsense monitoring as an alternative.
+
+</Callout>
+
+<Steps>
+  <Step title="Set up OPNsense monitoring instead" icon="server" titleType="p">
+
+    - Go to **Preferences → Router → OPNsense**.
+    - Enter your OPNsense API key, secret, and host address.
+    - Use the test-connection button to verify connectivity before saving.
+
+  </Step>
+
+  <Step title="Disable Fritz!Box monitoring" icon="minus" titleType="p">
+
+    - If the Fritz!Box is only acting as a modem behind OPNsense, disable Fritz!Box bandwidth monitoring in **Preferences → Router → Fritz!Box** to avoid repeated error polling.
+
+  </Step>
+</Steps>
+
+---
+
+## Settings page appears blank when opened with Cmd+comma
+
+If opening Settings via the `Cmd + ,` keyboard shortcut shows a blank white page instead of the configuration options, this was a known bug (issue #35) that has been fixed.
+
+<Steps>
+  <Step title="Update to the latest NetFluss version" icon="download" titleType="p">
+
+    - The blank settings page bug was fixed in a NetFluss update.
+    - Download the latest version from GitHub and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Use the popover as a workaround" icon="mouse-pointer" titleType="p">
+
+    - If you cannot update immediately, open Preferences by clicking the NetFluss menu bar icon and selecting Preferences from the popover instead of using `Cmd + ,`.
+
+  </Step>
+</Steps>
+
+---
+
+## Popover window overflows the screen
+
+If the NetFluss popover is taller than your screen and extends beyond the display boundaries, hiding the bottom status bar, this was a known issue (issue #42) that has been fixed.
+
+<Steps>
+  <Step title="Update to NetFluss 2.3 or later" icon="download" titleType="p">
+
+    - NetFluss 2.3 clamps the popover height to the available screen height on shorter displays.
+    - Download the latest version from GitHub and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Reduce visible popover sections" icon="layout" titleType="p">
+
+    - Go to **Preferences → Appearance → Popover sections** and hide sections you do not need.
+    - Fewer visible sections reduce the overall popover height.
+
+  </Step>
+</Steps>
+
+---
+
+## Blue focus ring stuck around the Wi-Fi reconnect icon
+
+If a persistent blue focus ring appears around the Wi-Fi reconnect icon in the NetFluss popover and never clears, this was a macOS update-related visual bug (issue #21).
+
+<Steps>
+  <Step title="Update to the latest NetFluss version" icon="download" titleType="p">
+
+    - This focus ring issue was fixed in a NetFluss update shortly after it was reported.
+    - Download the latest version from GitHub and move it to `/Applications`.
+
+  </Step>
+
+  <Step title="Restart NetFluss if the ring persists" icon="refresh-cw" titleType="p">
+
+    - Quit NetFluss from Activity Monitor or the menu bar.
+    - Relaunch from `/Applications` and check if the focus ring is gone.
+
+  </Step>
+</Steps>

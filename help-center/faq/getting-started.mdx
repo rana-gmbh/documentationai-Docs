@@ -1,8 +1,9 @@
 ---
 title: NetFluss FAQ
 description: >-
-  Answers to common NetFluss questions about features, macOS support, install
-  methods, permissions, privacy, and troubleshooting.
+  Answers to common NetFluss questions about features, Wi-Fi Manager, VPN
+  Client, data usage, router monitoring, multi-language support, macOS
+  support, install methods, permissions, privacy, and troubleshooting.
 ---
 ## Frequently asked questions
 
@@ -245,6 +246,123 @@ description: >-
     - Screenshots or screen recordings, if relevant
 
     Providing detailed information helps the maintainer reproduce and fix issues faster.
+  </Expandable>
+
+  <Expandable title="What is the Wi-Fi Manager and how do I use it?" default-open="false">
+    The Wi-Fi Manager (added in NetFluss 2.3) shows every nearby Wi-Fi network directly in the popover, with signal strength, band, security type, and a saved-star indicator.
+
+    You can:
+
+    - **Join a network** with a single click — known networks reconnect silently; new secured networks prompt for a password
+    - **Pin networks** to the top of the list so they are always visible, even when out of range
+    - **View details** via the (i) info popover per row: SSID, security, band, channel, RSSI, and BSSID
+    - **Limit the list** to the N strongest networks (configurable in Preferences → Wi-Fi)
+
+    Enable it in **Preferences → Wi-Fi**. NetFluss requires Location Services access to scan for nearby networks.
+
+    <Callout kind="info" collapsed="false">
+      Passwords for newly-joined networks are saved into macOS Known Networks via the privileged helper, so the system Wi-Fi menu reuses them even when NetFluss is not running.
+    </Callout>
+  </Expandable>
+
+  <Expandable title="What is the built-in VPN Client and which protocols does it support?" default-open="false">
+    The VPN Client (added in NetFluss 2.4) lets you connect to your VPN provider directly from NetFluss without installing any provider-specific software.
+
+    Supported protocols:
+
+    - **OpenVPN** (`.ovpn` files) — uses a bundled, signed `openvpn` binary
+    - **WireGuard** (`.conf` files) — uses bundled `wg-quick` and `wireguard-go`
+    - **IKEv2 / IPsec / L2TP** — uses the native macOS VPN stack via `NEVPNManager`
+
+    The popover shows a profile picker, server picker, connect/disconnect button, live status dot, assigned tunnel IP, and the exit country flag with country name and public IP.
+
+    Credentials are stored securely in the macOS Keychain. See the [VPN Client guide](/vpn-client) for detailed setup instructions.
+  </Expandable>
+
+  <Expandable title="How do I import VPN profiles into NetFluss?" default-open="false">
+    You can import VPN profiles in three ways:
+
+    - **Single config file** — import one `.ovpn` or `.conf` file
+    - **Folder of configs** — import a directory containing multiple config files
+    - **`.zip` bundle** — import a provider's profile pack; each config inside becomes a selectable server endpoint
+
+    Go to **Preferences → VPN** and use the import button. Sidecar certificate files (CA, cert, key, tls-auth, tls-crypt, pkcs12, dh) are copied alongside the config so non-inline profiles resolve correctly.
+
+    <Callout kind="info" collapsed="false">
+      If an `.ovpn` file uses a provider-patched-only directive such as `scramble` or XOR obfuscation, NetFluss warns you up front that the bundled upstream `openvpn` cannot run it.
+    </Callout>
+  </Expandable>
+
+  <Expandable title="Can NetFluss apply a custom DNS while my VPN is connected?" default-open="false">
+    Yes. Each VPN profile has an optional per-profile DNS setting. When enabled, NetFluss applies one of your configured DNS presets while the tunnel is connected, and automatically restores the previous resolver when you disconnect.
+
+    The DNS picker in the VPN profile settings shows only presets that have server addresses configured (the "Automatic" preset is excluded). This uses the same privileged helper and `networksetup` path as the standalone DNS Switcher.
+  </Expandable>
+
+  <Expandable title="Does NetFluss support VPN auto-reconnect and connect on launch?" default-open="false">
+    Yes, both are available as per-profile toggles in **Preferences → VPN**:
+
+    - **Reconnect automatically** — retries with exponential backoff (2 s up to 30 s, max 10 attempts). Deliberate disconnects and authentication failures are never retried.
+    - **Connect when NetFluss starts** — automatically connects the profile when NetFluss launches. Only one profile can carry this setting at a time.
+  </Expandable>
+
+  <Expandable title="What is the Data Usage summary in the popover?" default-open="false">
+    The Data Usage summary (added in NetFluss 2.4) shows a compact breakdown of your bandwidth consumption directly in the popover:
+
+    - **Today** — total upload, download, and combined data for the current day
+    - **This Month** — cumulative totals for the current month
+
+    The summary requires historical statistics to be enabled. You can turn on statistics in **Preferences → Statistics**.
+
+    <Callout kind="info" collapsed="false">
+      The Data Usage summary is localised in English, German, Simplified Chinese, and Traditional Chinese.
+    </Callout>
+  </Expandable>
+
+  <Expandable title="Can I exclude VPN traffic from my total bandwidth usage?" default-open="false">
+    Yes. VPN and tunnel interfaces (`utun*`) can inflate your total bandwidth because traffic is counted on both the physical adapter and the VPN tunnel.
+
+    Go to **Preferences → Adapters** and enable the option to exclude VPN/tunnel interfaces from the bandwidth summary. This prevents double-counting so the totals reflect your actual internet usage, not internal tunnel traffic.
+  </Expandable>
+
+  <Expandable title="What is OPNsense router monitoring?" default-open="false">
+    OPNsense monitoring (added in NetFluss 2.1) shows real-time WAN bandwidth from your OPNsense firewall directly in the NetFluss popover, alongside Fritz!Box, UniFi, and OpenWrt.
+
+    NetFluss queries the OPNsense REST API (`/api/diagnostics/traffic/interface`) over HTTPS or HTTP, auto-discovers the WAN interface, and stores your API key and secret securely in the macOS Keychain.
+
+    Configure it in **Preferences → Router → OPNsense**. A test-connection button confirms connectivity before you save your credentials.
+  </Expandable>
+
+  <Expandable title="Which languages does NetFluss support?" default-open="false">
+    NetFluss 2.2 introduced multi-language support. You can choose between:
+
+    - English
+    - German (Deutsch)
+    - Simplified Chinese (简体中文)
+    - Traditional Chinese (繁體中文)
+    - System Default (follows your macOS language setting)
+
+    Go to **Preferences → General → Language** to select a language. The change applies immediately to all windows — no restart needed.
+  </Expandable>
+
+  <Expandable title="What are customisable popover sections and how do I reorder them?" default-open="false">
+    NetFluss 2.3 lets you customise which sections appear in the popover and in what order. The available sections are:
+
+    - Download/Upload
+    - Network adapters
+    - Network flow
+    - DNS
+    - Router
+    - Wi-Fi Networks
+    - Top Apps
+
+    Go to **Preferences → Appearance → Popover sections** to drag-and-drop reorder sections and toggle individual section visibility. Your custom order and visibility settings are saved automatically.
+  </Expandable>
+
+  <Expandable title="What is the System default menu bar colour option?" default-open="false">
+    The "System default" colour option (added in NetFluss 2.4) automatically adapts your menu bar text and arrow colours to match your macOS appearance — light text on dark menu bars and dark text on light ones.
+
+    Find it in **Preferences → Appearance** alongside the individual colour pickers for upload/download arrows and numbers. Selecting "System default" means you no longer need to manually adjust colours when switching between light and dark wallpapers.
   </Expandable>
 </ExpandableGroup>
 
