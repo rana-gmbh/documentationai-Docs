@@ -29,6 +29,22 @@
                 "icon": "zap"
               }
             ]
+          },
+          {
+            "group": "Features",
+            "icon": "sparkles",
+            "pages": [
+              {
+                "title": "Wi-Fi Manager",
+                "path": "wifi-manager",
+                "icon": "wifi"
+              },
+              {
+                "title": "VPN Client",
+                "path": "vpn-client",
+                "icon": "lock"
+              }
+            ]
           }
         ]
       },
